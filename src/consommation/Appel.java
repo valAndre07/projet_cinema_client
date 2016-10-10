@@ -7,8 +7,6 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
-import metier.Proprietaire;
-
 
 public class Appel {
 	
