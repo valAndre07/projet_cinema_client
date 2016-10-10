@@ -18,7 +18,7 @@ public class Consommateur {
 	protected static final String SERVICE_URI = "http://localhost:8080/WebserviceRestful/mediatheque";
 	protected static Consommateur singleton = null;
 	protected  Client client;
-	public  WebTarget target; // permet de r�cup�rer l'URL du WS
+	public  WebTarget target; // permet de récupérer l'URL du WS
 
 	protected Consommateur() {
 		
