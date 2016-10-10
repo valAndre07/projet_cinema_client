@@ -59,6 +59,7 @@ public class Controleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		String reponse;
+		
 		// execute l'action
 		/*if (LISTER_RADHERENT.equals(actionName)) {
 			
