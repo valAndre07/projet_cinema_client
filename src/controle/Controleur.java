@@ -25,6 +25,7 @@ public class Controleur extends HttpServlet {
 	private static final String ACTION_TYPE = "action";
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
+	private static final String LISTER_FILMS = "listerfilms";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -61,8 +62,22 @@ public class Controleur extends HttpServlet {
 		String reponse;
 		
 		// execute l'action
-		/*if (LISTER_RADHERENT.equals(actionName)) {
-			
+		if (LISTER_FILMS.equals(actionName)) {
+			System.out.println("gros test");
+			String ressource = "/listeFilms";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				List<Film> json = gson.fromJson(reponse, List.class);
+				request.setAttribute("mesFilms", json);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+
+			destinationPage = "/listerfilms.jsp";
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
@@ -71,7 +86,7 @@ public class Controleur extends HttpServlet {
 		// Redirection vers la page jsp appropriee
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
 		dispatcher.forward(request, response);
-		 */
+		 
 		}
 }
 
