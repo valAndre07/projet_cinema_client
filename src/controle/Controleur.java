@@ -25,7 +25,11 @@ public class Controleur extends HttpServlet {
 	private static final String ACTION_TYPE = "action";
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
+	private static final String INDEX = "index";
 	private static final String LISTER_FILMS = "listerfilms";
+	private static final String LISTER_REALISATEURS = "listerrealisateurs";
+	private static final String LISTER_ACTEURS = "listeracteurs";
+	private static final String LISTER_CATEGORIES = "listercategories";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -60,10 +64,12 @@ public class Controleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		String reponse;
-		
+		// execute l'action
+				if (INDEX.equals(actionName)) {
+					destinationPage = "/index.jsp";
+				}
 		// execute l'action
 		if (LISTER_FILMS.equals(actionName)) {
-			System.out.println("gros test");
 			String ressource = "/listeFilms";
 			try {
 				Appel unAppel = new Appel();
@@ -78,6 +84,54 @@ public class Controleur extends HttpServlet {
 			}
 
 			destinationPage = "/listerfilms.jsp";
+		}
+		if (LISTER_REALISATEURS.equals(actionName)) {
+			String ressource = "/listeRealisateurs";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				List<Film> json = gson.fromJson(reponse, List.class);
+				request.setAttribute("mesRealisateurs", json);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+
+			destinationPage = "/listerrealisateurs.jsp";
+		}
+		if (LISTER_ACTEURS.equals(actionName)) {
+			String ressource = "/listerActeurs";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				List<Film> json = gson.fromJson(reponse, List.class);
+				request.setAttribute("mesActeurs", json);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+
+			destinationPage = "/listeracteurs.jsp";
+		}
+		if (LISTER_CATEGORIES.equals(actionName)) {
+			String ressource = "/listerCategories";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				List<Film> json = gson.fromJson(reponse, List.class);
+				request.setAttribute("mesCategories", json);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+
+			destinationPage = "/listercategories.jsp";
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
