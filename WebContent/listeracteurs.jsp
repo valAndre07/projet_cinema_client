@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>PolyCiné</title>
 </head>
-<body>
+
+<body style="background: url(img/banner-bg.jpg) repeat;">
+
+<jsp:include page="header.jsp"/>
 
 </table>
 	<th>
