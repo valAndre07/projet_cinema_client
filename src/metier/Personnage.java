@@ -2,21 +2,22 @@ package metier;
 
 public class Personnage {
 	
-	private int noActeur;
-	private int noFilm;
+	private Acteur acteur;
+	private Film film;
 	private String nomPersonnage;
 	
-	public int getNoActeur() {
-		return noActeur;
+	
+	public Acteur getActeur() {
+		return acteur;
 	}
-	public void setNoActeur(int noActeur) {
-		this.noActeur = noActeur;
+	public void setActeur(Acteur acteur) {
+		this.acteur = acteur;
 	}
-	public int getNoFilm() {
-		return noFilm;
+	public Film getFilm() {
+		return film;
 	}
-	public void setNoFilm(int noFilm) {
-		this.noFilm = noFilm;
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 	public String getNomPersonnage() {
 		return nomPersonnage;

@@ -93,6 +93,18 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/editfilm.jsp";
 		}
 		if (DELETE_FILM.equals(actionName)) {
+			String ressource = "/deleteFilm";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				List<Film> json = gson.fromJson(reponse, List.class);
+				request.setAttribute("mesFilms", json);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
 			destinationPage = "/listerfilms.jsp";
 		}
 		if (LISTER_REALISATEURS.equals(actionName)) {

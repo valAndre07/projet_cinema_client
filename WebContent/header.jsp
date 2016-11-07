@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="css/custom-styles.css">
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="css/component.css">
-<link rel="stylesheet" href="css/font-awesome-ie7.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+
 
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         
@@ -52,6 +53,7 @@
 <script src="js/imagesloaded.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/AnimOnScroll.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
     
 </body>
 </html>

@@ -8,8 +8,8 @@ public class Film {
 	private String dateSortie;
 	private int budget;
 	private int montantRecette;
-	private int noRea;
-	private String codeCat;
+	private Realisateur realisateur;
+	private Categorie categorie;
 	
 	public int getNoFilm() {
 		return noFilm;
@@ -47,17 +47,18 @@ public class Film {
 	public void setMontantRecette(int montantRecette) {
 		this.montantRecette = montantRecette;
 	}
-	public int getNoRea() {
-		return noRea;
+	public Realisateur getRealisateur() {
+		return realisateur;
 	}
-	public void setNoRea(int noRea) {
-		this.noRea = noRea;
+	public void setRealisateur(Realisateur realisateur) {
+		this.realisateur = realisateur;
 	}
-	public String getCodeCat() {
-		return codeCat;
+	public Categorie getCategorie() {
+		return categorie;
 	}
-	public void setCodeCat(String codeCat) {
-		this.codeCat = codeCat;
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
+	
 	
 }

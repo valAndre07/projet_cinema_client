@@ -14,7 +14,6 @@
 
 
 <br><br><br><br>
-<h1 style="color:white;">Wesh les négros de la street de l'ambiance</h1>
 
     
 </body>
