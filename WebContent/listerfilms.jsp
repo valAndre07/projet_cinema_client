@@ -23,8 +23,8 @@
 			     <th>Date de sortie</th>
 			     <th>Budget</th>
 			     <th>Recette</th>
-			     <th>noRea</th>
-			     <th>codeCat</th>
+			     <th>Realisateur</th>
+			     <th>Categorie</th>
 			     <th>Actions</th>
             </tr>
             </thead>
