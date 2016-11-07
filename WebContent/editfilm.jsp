@@ -13,8 +13,37 @@
         
 <br><br><br><br>
 
-
-
+<form action="/Controleur?action=" method="get" style="text-align:center;">
+  <div class="form-group">
+    <input type="search" class="form-control" id="edit_titre" placeholder="Titre">
+    <input type="search" class="form-control" id="edit_duree" placeholder="Durée">
+    <input type="search" class="form-control" id="edit_date" placeholder="Date sortie">
+    <input type="search" class="form-control" id="edit_budget" placeholder="Budget">
+    <input type="search" class="form-control" id="edit_recette" placeholder="Recette">
+    <div class="form-group">
+    <label for="exampleSelect1">Réalisateur</label>
+    <select class="form-control" id="edit_realisateur">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">Catégorie</label>
+    <select class="form-control" id="edit_categorie">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
 
 </body>
 </html>
