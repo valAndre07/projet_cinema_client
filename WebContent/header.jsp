@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/custom-styles.css">
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="css/component.css">
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
 
