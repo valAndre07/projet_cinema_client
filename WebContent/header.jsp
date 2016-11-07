@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="css/component.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
 
 
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
