@@ -7,6 +7,7 @@ public class Acteur {
 	private String prenomActeur;
 	private String dateNaissance;
 	private String dateDeces;
+	
 	public int getNoActeur() {
 		return noActeur;
 	}

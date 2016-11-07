@@ -30,15 +30,15 @@
                </a>
                <div class="nav-collapse collapse">
                    <ul class="nav">
-                       <li><a href="Controleur?action=listerfilms">Films</a></li>
-                       <li><a href="Controleur?action=listerrealisateurs">Réalisateurs</a></li>
+                       <li><a href="Controleur?action=listerFilms">Films</a></li>
+                       <li><a href="Controleur?action=listerRealisateurs">Réalisateurs</a></li>
                        <li>
                            <div class="site-name">
                               <h1><a href="Controleur?action=index" style="color:white;">PolyCiné</a></h1>
                            </div>
                        </li>
-                       <li><a href="Controleur?action=listercategories">Catégories</a></li>
-                       <li><a href="Controleur?action=listeracteurs">Acteurs</a></li>
+                       <li><a href="Controleur?action=listerCategories">Catégories</a></li>
+                       <li><a href="Controleur?action=listerActeurs">Acteurs</a></li>
                    </ul>
                </div><!--/.nav-collapse -->
         </div>

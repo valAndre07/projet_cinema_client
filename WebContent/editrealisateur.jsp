@@ -5,11 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PolyCiné</title>
-</head>
 
+</head>
 <body style="background: url(img/banner-bg.jpg) repeat;">
 
 <jsp:include page="header.jsp"/>
+        
+<br><br><br><br>
+
+
+
 
 </body>
 </html>

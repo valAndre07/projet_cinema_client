@@ -26,10 +26,14 @@ public class Controleur extends HttpServlet {
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
 	private static final String INDEX = "index";
-	private static final String LISTER_FILMS = "listerfilms";
-	private static final String LISTER_REALISATEURS = "listerrealisateurs";
-	private static final String LISTER_ACTEURS = "listeracteurs";
-	private static final String LISTER_CATEGORIES = "listercategories";
+	private static final String LISTER_FILMS = "listerFilms";
+	private static final String EDIT_FILM = "editFilm";
+	private static final String DELETE_FILM = "deleteFilm";
+	private static final String LISTER_REALISATEURS = "listerRealisateurs";
+	private static final String EDIT_REALISATEUR = "editRealisateur";
+	private static final String DELETE_REALISATEUR = "deleteRealisateur";
+	private static final String LISTER_ACTEURS = "listerActeurs";
+	private static final String LISTER_CATEGORIES = "listerCategories";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -85,6 +89,12 @@ public class Controleur extends HttpServlet {
 
 			destinationPage = "/listerfilms.jsp";
 		}
+		if (EDIT_FILM.equals(actionName)) {
+			destinationPage = "/editfilm.jsp";
+		}
+		if (DELETE_FILM.equals(actionName)) {
+			destinationPage = "/listerfilms.jsp";
+		}
 		if (LISTER_REALISATEURS.equals(actionName)) {
 			String ressource = "/listeRealisateurs";
 			try {
@@ -101,6 +111,14 @@ public class Controleur extends HttpServlet {
 
 			destinationPage = "/listerrealisateurs.jsp";
 		}
+		
+		if (EDIT_REALISATEUR.equals(actionName)) {
+			destinationPage = "/editrealisateur.jsp";
+		}
+		if (DELETE_REALISATEUR.equals(actionName)) {
+			destinationPage = "/listerrealisateurs.jsp";
+		}
+		
 		if (LISTER_ACTEURS.equals(actionName)) {
 			String ressource = "/listerActeurs";
 			try {
