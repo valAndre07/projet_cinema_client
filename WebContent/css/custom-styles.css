@@ -321,20 +321,6 @@ ul{margin: 0 !important;}
 }
 
 
-.site-name:after {
- content: "";
- position: absolute;
- bottom: -25px; left: 0;
- width: 0;
- height: 0;
-
- right: 0;
- border-left: 109px solid transparent;
- border-right: 120px solid transparent;
- border-top: 26px solid #f9b701;
-}
-
-
 
 
 

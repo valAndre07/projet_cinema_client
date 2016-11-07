@@ -157,17 +157,6 @@ s/*!
  position: relative;
  border-radius: 0 0 5px 5px;
 }
-.logo:after {
- content: "";
- position: absolute;
- bottom: -25px; left: 0;
- width: 0;
- height: 0;
- right: 0;
- border-left: 107px solid transparent;
- border-right: 125px solid transparent;
- border-top: 25px solid #f9b701;
-}
   .banner .carousel-caption h1{font-size: 34px !important; line-height: 40px !important; padding: 8px 3px !important;}
   .banner .carousel-caption h2{font-size: 28px !important; line-height: 34px !important;}
   .banner .carousel-control{font-size: 16px !important; right: 42% !important; top: 40% !important;
