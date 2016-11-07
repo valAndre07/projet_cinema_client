@@ -1,0 +1,5 @@
+#dataTable {
+	padding : 10px;
+	overflow-x: auto;
+	white-space: nowrap;
+}
