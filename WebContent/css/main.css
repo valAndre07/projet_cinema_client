@@ -3,3 +3,13 @@
 	overflow-x: auto;
 	white-space: nowrap;
 }
+
+div#table_id_info.dataTables_info
+{
+	color:white;
+}
+
+th
+{
+	color:white;
+}
