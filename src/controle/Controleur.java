@@ -1,6 +1,9 @@
 package controle;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,11 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import consommation.Appel;
 import metier.*;
 import meserreurs.*;
+import java.lang.reflect.Type;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+
 
 /**
  * Servlet implementation class Controleur
@@ -27,6 +40,7 @@ public class Controleur extends HttpServlet {
 	private static final String ERROR_PAGE = "/erreur.jsp";
 	private static final String INDEX = "index";
 	private static final String LISTER_FILMS = "listerFilms";
+	private static final String ADD_FILM = "addFilm";
 	private static final String EDIT_FILM = "editFilm";
 	private static final String DELETE_FILM = "deleteFilm";
 	private static final String LISTER_REALISATEURS = "listerRealisateurs";
@@ -78,9 +92,19 @@ public class Controleur extends HttpServlet {
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
+				String recup = reponse.substring(8, reponse.length()-1);
 				Gson gson = new Gson();
-				List<Film> json = gson.fromJson(reponse, List.class);
-				request.setAttribute("mesFilms", json);
+				try
+				{
+					TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
+					ArrayList<Film> films = gson.fromJson(recup, token.getType());
+					
+					request.setAttribute("mesFilms", films);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";
@@ -88,6 +112,9 @@ public class Controleur extends HttpServlet {
 			}
 
 			destinationPage = "/listerfilms.jsp";
+		}
+		if (ADD_FILM.equals(actionName)) {
+			destinationPage = "/addfilm.jsp";
 		}
 		if (EDIT_FILM.equals(actionName)) {
 			destinationPage = "/editfilm.jsp";

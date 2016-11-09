@@ -22,15 +22,14 @@
         <table class="display hover stripe row-border" id="table_list">
             <thead>
             <tr>
-			     <th>noRealisateur</th>
-			     <th>nomRealisateur</th>
-			     <th>prenomRealisateur</th>
+			     <th>Nom</th>
+			     <th>Prénom</th>
+			     <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${mesRealisateurs}" var="realisateur" >
                 <tr>
-                    <td>${realisateur.noRealisateur}</td>
 				    <td>${realisateur.nomRealisateur}</td>
 				    <td>${realisateur.prenomRealisateur}</td>
                     <td style="text-align: center;">

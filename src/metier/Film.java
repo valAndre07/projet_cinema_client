@@ -1,13 +1,15 @@
 package metier;
 
+import java.util.Date;
+
 public class Film {
 
 	private int noFilm;
-	private String titre;
-	private int duree;
-	private String dateSortie;
 	private int budget;
+	private Date dateSortie;
+	private int duree;
 	private int montantRecette;
+	private String titre;
 	private Realisateur realisateur;
 	private Categorie categorie;
 	
@@ -29,10 +31,10 @@ public class Film {
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
-	public String getDateSortie() {
+	public Date getDateSortie() {
 		return dateSortie;
 	}
-	public void setDateSortie(String dateSortie) {
+	public void setDateSortie(Date dateSortie) {
 		this.dateSortie = dateSortie;
 	}
 	public int getBudget() {

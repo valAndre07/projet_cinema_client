@@ -2,27 +2,27 @@ package metier;
 
 public class Realisateur {
 
-	private int noRealisateur;
-	private String nomRealisateur;
-	private String prenomRealisateur;
+	private int noRea;
+	private String nomRea;
+	private String prenRea;
 	
 	public int getNoRealisateur() {
-		return noRealisateur;
+		return noRea;
 	}
 	public void setNoRealisateur(int noRealisateur) {
-		this.noRealisateur = noRealisateur;
+		this.noRea = noRealisateur;
 	}
 	public String getNomRealisateur() {
-		return nomRealisateur;
+		return nomRea;
 	}
 	public void setNomRealisateur(String nomRealisateur) {
-		this.nomRealisateur = nomRealisateur;
+		this.nomRea = nomRealisateur;
 	}
 	public String getPrenomRealisateur() {
-		return prenomRealisateur;
+		return prenRea;
 	}
 	public void setPrenomRealisateur(String prenomRealisateur) {
-		this.prenomRealisateur = prenomRealisateur;
+		this.prenRea = prenomRealisateur;
 	}
 	
 	
