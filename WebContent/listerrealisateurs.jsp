@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PolyCiné</title>
 
-<link rel="stylesheet" href="css/data_tables.css">
 
 </head>
 
@@ -15,11 +15,12 @@
 <jsp:include page="header.jsp"/>
 
 <br><br><br><br>
+
+
 <div class="row">
-    <div class="col-xs-1 col-sm-1 col-md-1">
-    </div>
-    <div class="col-xs-10 col-sm-10 col-md-10">
-        <table class="display hover stripe row-border" id="table_list">
+    <div class="col-xs-12 col-sm-12 col-md-12" id="dataTable">
+
+        <table class="display" id="table_id">
             <thead>
             <tr>
 			     <th>Nom</th>
@@ -28,13 +29,13 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${mesRealisateurs}" var="realisateur" >
+				<c:forEach items="${mesRealisateurs}" var="realisateur" >
                 <tr>
 				    <td>${realisateur.nomRealisateur}</td>
 				    <td>${realisateur.prenomRealisateur}</td>
                     <td style="text-align: center;">
                         <a href="/Controleur?action=editRealisateur&idRealisateur=${realisateur.noRealisateur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="/Controleur?action=deleteRealisateur&idRealisateur=${realisateur.noRealisateur}" data-confirm="Etes vous sûr de vouloir supprimer cette oeuvre ? (Veuillez supprimer la réservation de cette oeuvre s'il y en a une avant de supprimer l'oeuvre)">
+                        <a href="/Controleur?action=deleteRealisateur&idRealisateur=${realisateur.noRealisateur}" data-confirm="Etes vous sûr de vouloir supprimer ce réalisateur ? ">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -43,11 +44,7 @@
             </tbody>
         </table>
     </div>
-    <div class="col-xs-1 col-sm-1 col-md-1">
-    </div>
 </div>
-
-<script src="js/data_tables.js"></script>
 
 <script>
 

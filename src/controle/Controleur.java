@@ -40,7 +40,7 @@ public class Controleur extends HttpServlet {
 	private static final String ERROR_PAGE = "/erreur.jsp";
 	private static final String INDEX = "index";
 	private static final String LISTER_FILMS = "listerFilms";
-	private static final String ADD_FILM = "addFilm";
+	private static final String ADD_FILM_PAGE = "addFilmPage";
 	private static final String EDIT_FILM = "editFilm";
 	private static final String DELETE_FILM = "deleteFilm";
 	private static final String LISTER_REALISATEURS = "listerRealisateurs";
@@ -113,7 +113,41 @@ public class Controleur extends HttpServlet {
 
 			destinationPage = "/listerfilms.jsp";
 		}
-		if (ADD_FILM.equals(actionName)) {
+		if (ADD_FILM_PAGE.equals(actionName)) {
+			String ressource1 = "/listeRealisateurs";
+			String ressource2 = "/listeCategories";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				//String recup = reponse.substring(8, reponse.length()-1);
+				Gson gson = new Gson();
+				try
+				{
+					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
+					ArrayList<Realisateur> realisateurs = gson.fromJson(reponse, token.getType());
+					
+					request.setAttribute("mesRealisateurs", realisateurs);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
+				reponse = unAppel.appelJson(ressource2);
+				//String recup = reponse.substring(8, reponse.length()-1);
+				try
+				{
+					TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
+					ArrayList<Categorie> categories = gson.fromJson(reponse, token.getType());
+					
+					request.setAttribute("mesCategories", categories);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
 			destinationPage = "/addfilm.jsp";
 		}
 		if (EDIT_FILM.equals(actionName)) {
@@ -139,9 +173,18 @@ public class Controleur extends HttpServlet {
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
+				//String recup = reponse.substring(8, reponse.length()-1);
 				Gson gson = new Gson();
-				List<Film> json = gson.fromJson(reponse, List.class);
-				request.setAttribute("mesRealisateurs", json);
+				try
+				{
+					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
+					ArrayList<Realisateur> realisateurs = gson.fromJson(reponse, token.getType());
+					
+					request.setAttribute("mesRealisateurs", realisateurs);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";
@@ -159,13 +202,22 @@ public class Controleur extends HttpServlet {
 		}
 		
 		if (LISTER_ACTEURS.equals(actionName)) {
-			String ressource = "/listerActeurs";
+			String ressource = "/listeActeurs";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
+				//String recup = reponse.substring(8, reponse.length()-1);
 				Gson gson = new Gson();
-				List<Film> json = gson.fromJson(reponse, List.class);
-				request.setAttribute("mesActeurs", json);
+				try
+				{
+					TypeToken<ArrayList<Acteur>> token = new TypeToken<ArrayList<Acteur>>(){};
+					ArrayList<Acteur> acteurs = gson.fromJson(reponse, token.getType());
+					
+					request.setAttribute("mesActeurs", acteurs);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";
@@ -175,13 +227,22 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/listeracteurs.jsp";
 		}
 		if (LISTER_CATEGORIES.equals(actionName)) {
-			String ressource = "/listerCategories";
+			String ressource = "/listeCategories";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
+				//String recup = reponse.substring(8, reponse.length()-1);
 				Gson gson = new Gson();
-				List<Film> json = gson.fromJson(reponse, List.class);
-				request.setAttribute("mesCategories", json);
+				try
+				{
+					TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
+					ArrayList<Categorie> categories = gson.fromJson(reponse, token.getType());
+					
+					request.setAttribute("mesCategories", categories);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";

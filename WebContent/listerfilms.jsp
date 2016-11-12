@@ -16,7 +16,7 @@
 <br>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
-		<a href="Controleur?action=addFilm"><button type="submit" class="btn btn-primary btn-large">Ajouter un film</button></a>
+		<a href="Controleur?action=addFilmPage"><button type="submit" class="btn btn-primary btn-large">Ajouter un film</button></a>
 	</div>
 </div>
 <div class="row">
