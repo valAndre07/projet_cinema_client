@@ -13,11 +13,15 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">Modification du film</h1>
+<h1 style="color:white; text-align:center;">Ajout d'une catégorie</h1>
 <br>
-<form action="Controleur?action=" method="get" style="text-align:center;">
+<form action="Controleur?action=" method="post" style="text-align:center;">
+  <div class="form-group">
+    <input type="search" class="form-control" id="add_libelle" placeholder="Libelle">
   
-  <button type="submit" class="btn btn-primary btn-large">Modifier</button>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
 </body>

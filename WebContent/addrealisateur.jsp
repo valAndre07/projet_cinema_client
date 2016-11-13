@@ -13,11 +13,16 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">Modification du film</h1>
+<h1 style="color:white; text-align:center;">Ajout d'un réalisateur</h1>
 <br>
-<form action="Controleur?action=" method="get" style="text-align:center;">
-  
-  <button type="submit" class="btn btn-primary btn-large">Modifier</button>
+<form action="Controleur?action=" method="post" style="text-align:center;">
+  <div class="form-group">
+    <input type="search" class="form-control" name="add_nom" placeholder="Nom">
+    <input type="search" class="form-control" name="add_prenom" placeholder="Prenom">
+   
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
 </body>

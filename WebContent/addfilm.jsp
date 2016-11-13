@@ -15,25 +15,25 @@
 
 <h1 style="color:white; text-align:center;">Ajout du film</h1>
 <br>
-<form action="Controleur?action=" method="post" style="text-align:center;">
+<form action="Controleur?action=addFilm" method="post" style="text-align:center;">
   <div class="form-group">
-    <input type="search" class="form-control" id="add_titre" placeholder="Titre">
-    <input type="search" class="form-control" id="add_duree" placeholder="Durée">
-    <input type="search" class="form-control" id="add_date" placeholder="Date sortie">
-    <input type="search" class="form-control" id="add_budget" placeholder="Budget">
-    <input type="search" class="form-control" id="add_recette" placeholder="Recette">
+    <input type="search" class="form-control" name="add_titre" placeholder="Titre">
+    <input type="search" class="form-control" name="add_duree" placeholder="Durée">
+    <input type="search" class="form-control" name="add_date" placeholder="Date sortie">
+    <input type="search" class="form-control" name="add_budget" placeholder="Budget">
+    <input type="search" class="form-control" name="add_recette" placeholder="Recette">
     <div class="form-group">
     <label for="exampleSelect1">Réalisateur</label>
-    <select class="form-control" id="add_realisateur">
+    <select class="form-control" name="add_realisateur">
 	    <c:forEach var="realisateur" items="${mesRealisateurs}"  >
-	    	<option value="${realisateur.noRealisateur}">${realisateur.prenomRealisateur}${realisateur.nomRealisateur}</option>
+	    	<option value="${realisateur.noRealisateur}">${realisateur.prenomRealisateur} ${realisateur.nomRealisateur}</option>
 	    </c:forEach>
     </select>
   
   </div>
   <div class="form-group">
     <label for="exampleSelect1">Catégorie</label>
-    <select class="form-control" id="add_categorie">
+    <select class="form-control" name="add_categorie">
       <c:forEach var="categorie" items="${mesCategories}"  >
 	    	<option value="${categorie.codeCat}">${categorie.libelleCat}</option>
 	    </c:forEach>

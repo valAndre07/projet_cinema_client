@@ -15,7 +15,11 @@
 <jsp:include page="header.jsp"/>
 
 <br><br><br><br>
-
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
+		<a href="Controleur?action=addActeurForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un acteur</button></a>
+	</div>
+</div>
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="dataTable">

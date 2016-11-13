@@ -16,7 +16,11 @@
 
 <br><br><br><br>
 
-
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
+		<a href="Controleur?action=addCategorieForm"><button type="submit" class="btn btn-primary btn-large">Ajouter une catégorie</button></a>
+	</div>
+</div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="dataTable">
 
