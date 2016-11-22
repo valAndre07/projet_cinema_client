@@ -95,7 +95,7 @@ public class Controleur extends HttpServlet {
 				}
 		// execute l'action
 		if (LISTER_FILMS.equals(actionName)) {
-			String ressource = "/listeFilms";
+			String ressource = "films/listeFilms";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
@@ -122,8 +122,8 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/listerfilms.jsp";
 		}
 		if (ADD_FILM_FORM.equals(actionName)) {
-			String ressource1 = "/listeRealisateurs";
-			String ressource2 = "/listeCategories";
+			String ressource1 = "realisateurs/listeRealisateurs";
+			String ressource2 = "categories/listeCategories";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource1);
@@ -173,7 +173,7 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/editfilm.jsp";
 		}
 		if (DELETE_FILM.equals(actionName)) {
-			String ressource = "/deleteFilm";
+			String ressource = "films/deleteFilm";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
@@ -188,11 +188,11 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/listerfilms.jsp";
 		}
 		if (LISTER_REALISATEURS.equals(actionName)) {
-			String ressource = "/listeRealisateurs";
+			String ressource = "realisateurs/listeRealisateurs";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
-				//String recup = reponse.substring(8, reponse.length()-1);
+				String recup = reponse.substring(15, reponse.length()-1);
 				Gson gson = new Gson();
 				try
 				{
@@ -229,11 +229,11 @@ public class Controleur extends HttpServlet {
 		}
 		
 		if (LISTER_ACTEURS.equals(actionName)) {
-			String ressource = "/listeActeurs";
+			String ressource = "acteurs/listeActeurs";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
-				//String recup = reponse.substring(8, reponse.length()-1);
+				String recup = reponse.substring(9, reponse.length()-1);
 				Gson gson = new Gson();
 				try
 				{
@@ -265,11 +265,11 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/listeracteurs.jsp";
 		}
 		if (LISTER_CATEGORIES.equals(actionName)) {
-			String ressource = "/listeCategories";
+			String ressource = "categories/listeCategories";
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
-				//String recup = reponse.substring(8, reponse.length()-1);
+				String recup = reponse.substring(13, reponse.length()-1);
 				Gson gson = new Gson();
 				try
 				{

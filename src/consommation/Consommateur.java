@@ -15,7 +15,7 @@ public class Consommateur {
 	 * @param args
 	 */
 
-	protected static final String SERVICE_URI = "http://localhost:8080/ProjetCinemaWS/films";
+	protected static final String SERVICE_URI = "http://localhost:8080/ProjetCinemaWS/";
 	protected static Consommateur singleton = null;
 	protected  Client client;
 	public  WebTarget target; // permet de récupérer l'URL du WS
