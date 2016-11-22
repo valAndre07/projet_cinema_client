@@ -100,6 +100,7 @@ public class Controleur extends HttpServlet {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
 				String recup = reponse.substring(8, reponse.length()-1);
+				System.out.println(recup);
 				Gson gson = new Gson();
 				try
 				{
@@ -192,13 +193,12 @@ public class Controleur extends HttpServlet {
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
-				String recup = reponse.substring(15, reponse.length()-1);
 				Gson gson = new Gson();
+				String recup = reponse.substring(15, reponse.length()-1);
+				TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
+				ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
 				try
 				{
-					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
-					ArrayList<Realisateur> realisateurs = gson.fromJson(reponse, token.getType());
-					
 					request.setAttribute("mesRealisateurs", realisateurs);
 				}
 				catch(Exception e){
@@ -233,13 +233,13 @@ public class Controleur extends HttpServlet {
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
-				String recup = reponse.substring(9, reponse.length()-1);
 				Gson gson = new Gson();
+				String recup = reponse.substring(10, reponse.length()-1);
+				TypeToken<ArrayList<Acteur>> token = new TypeToken<ArrayList<Acteur>>(){};
+				ArrayList<Acteur> acteurs = gson.fromJson(recup, token.getType());
+				System.out.println(recup);
 				try
 				{
-					TypeToken<ArrayList<Acteur>> token = new TypeToken<ArrayList<Acteur>>(){};
-					ArrayList<Acteur> acteurs = gson.fromJson(reponse, token.getType());
-					
 					request.setAttribute("mesActeurs", acteurs);
 				}
 				catch(Exception e){
@@ -269,13 +269,13 @@ public class Controleur extends HttpServlet {
 			try {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
-				String recup = reponse.substring(13, reponse.length()-1);
 				Gson gson = new Gson();
+				String recup = reponse.substring(13, reponse.length()-1);
+				System.out.println(recup);
+				TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
+				ArrayList<Categorie> categories = gson.fromJson(recup, token.getType());
 				try
 				{
-					TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
-					ArrayList<Categorie> categories = gson.fromJson(reponse, token.getType());
-					
 					request.setAttribute("mesCategories", categories);
 				}
 				catch(Exception e){

@@ -53,7 +53,7 @@
 <script>
 
     $(document).ready(function(){
-        $('#table_list').dataTable( {
+        $('#table_id').dataTable( {
             "language": {
                 "sProcessing":     "Traitement en cours...",
                 "sSearch":         "Rechercher&nbsp;:",

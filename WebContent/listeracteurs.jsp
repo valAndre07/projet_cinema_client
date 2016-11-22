@@ -27,6 +27,7 @@
         <table class="display" id="table_id">
             <thead>
             <tr>
+            	<th>No</th>
 			     <th>Nom</th>
 			     <th>Prénom</th>
 			     <th>Date naissance</th>
@@ -37,6 +38,7 @@
             <tbody>
 				<c:forEach var="acteur" items="${mesActeurs}"  >
 	                <tr>
+	                	<td>${acteur.noActeur}</td>
 					    <td>${acteur.nomActeur}</td>
 					    <td>${acteur.prenomActeur}</td>
 					    <td>${acteur.dateNaissance}</td>
@@ -57,7 +59,7 @@
 <script>
 
     $(document).ready(function(){
-        $('#table_list').dataTable( {
+        $('#table_id').dataTable( {
             "language": {
                 "sProcessing":     "Traitement en cours...",
                 "sSearch":         "Rechercher&nbsp;:",

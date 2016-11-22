@@ -2,35 +2,35 @@ package metier;
 
 public class Acteur {
 
-	private int noActeur;
-	private String nomActeur;
-	private String prenomActeur;
-	private String dateNaissance;
+	private int noAct;
+	private String nomAct;
+	private String prenomAct;
+	private String dateNaiss;
 	private String dateDeces;
 	
 	public int getNoActeur() {
-		return noActeur;
+		return noAct;
 	}
 	public void setNoActeur(int noActeur) {
-		this.noActeur = noActeur;
+		this.noAct = noActeur;
 	}
 	public String getNomActeur() {
-		return nomActeur;
+		return nomAct;
 	}
 	public void setNomActeur(String nomActeur) {
-		this.nomActeur = nomActeur;
+		this.nomAct = nomActeur;
 	}
 	public String getPrenomActeur() {
-		return prenomActeur;
+		return prenomAct;
 	}
 	public void setPrenomActeur(String prenomActeur) {
-		this.prenomActeur = prenomActeur;
+		this.prenomAct = prenomActeur;
 	}
 	public String getDateNaissance() {
-		return dateNaissance;
+		return dateNaiss;
 	}
 	public void setDateNaissance(String dateNaissance) {
-		this.dateNaissance = dateNaissance;
+		this.dateNaiss = dateNaissance;
 	}
 	public String getDateDeces() {
 		return dateDeces;
