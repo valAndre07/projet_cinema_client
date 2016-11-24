@@ -22,6 +22,8 @@ import consommation.Appel;
 import metier.*;
 import meserreurs.*;
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -43,6 +45,7 @@ public class Controleur extends HttpServlet {
 	private static final String ADD_FILM_FORM = "addFilmForm";
 	private static final String ADD_FILM = "addFilm";
 	private static final String EDIT_FILM = "editFilm";
+	private static final String INFOS_FILM = "infosFilm";
 	private static final String DELETE_FILM = "deleteFilm";
 	private static final String LISTER_REALISATEURS = "listerRealisateurs";
 	private static final String ADD_REALISATEUR_FORM = "addRealisateurForm";
@@ -71,7 +74,12 @@ public class Controleur extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		try {
+			processusTraiteRequete(request, response);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -81,11 +89,16 @@ public class Controleur extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		try {
+			processusTraiteRequete(request, response);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, ParseException {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		String reponse;
@@ -126,61 +139,75 @@ public class Controleur extends HttpServlet {
 			String ressource1 = "realisateurs/listeRealisateurs";
 			String ressource2 = "categories/listeCategories";
 			try {
-				Appel unAppel = new Appel();
-				reponse = unAppel.appelJson(ressource1);
-				//String recup = reponse.substring(8, reponse.length()-1);
-				Gson gson = new Gson();
-				try
-				{
+					Appel unAppel = new Appel();
+					reponse = unAppel.appelJson(ressource1);
+					Gson gson = new Gson();
+					String recup = reponse.substring(15, reponse.length()-1);
 					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
-					ArrayList<Realisateur> realisateurs = gson.fromJson(reponse, token.getType());
+					ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
+					System.out.println(realisateurs.get(1).getNomRealisateur());
+					
+					reponse = unAppel.appelJson(ressource2);
+					recup = reponse.substring(13, reponse.length()-1);
+					TypeToken<ArrayList<Categorie>> token2 = new TypeToken<ArrayList<Categorie>>(){};
+					ArrayList<Categorie> categories = gson.fromJson(recup, token2.getType());
+					System.out.println(categories.get(1).getLibelleCat());
 					
 					request.setAttribute("mesRealisateurs", realisateurs);
-				}
-				catch(Exception e){
-					System.out.println(e);
-				}
-				reponse = unAppel.appelJson(ressource2);
-				//String recup = reponse.substring(8, reponse.length()-1);
-				try
-				{
-					TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
-					ArrayList<Categorie> categories = gson.fromJson(reponse, token.getType());
-					
 					request.setAttribute("mesCategories", categories);
-				}
-				catch(Exception e){
-					System.out.println(e);
-				}
+					
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";
 				request.setAttribute("MesErreurs", e.getMessage());
 			}
+		
 			destinationPage = "/addfilm.jsp";
 		}
 		if (ADD_FILM.equals(actionName)) {
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 			Film film = new Film();
 			film.setTitre(request.getParameter("add_titre").toString());
-			//film.setDuree(request.getParameter("add_duree"));
-			//film.setDate(request.getParameter("add_titre"));
-			//film.setBudget(request.getParameter("add_titre"));
-			//film.setRecette(request.getParameter("add_titre"));
-			//film.setRealisateur(request.getParameter("add_titre"));
-			//film.setCategorie(request.getParameter("add_titre"));*/
+			film.setDuree(Integer.parseInt(request.getParameter("add_duree").toString()));
+			film.setDateSortie(formatter.parse(request.getParameter("add_date").toString()));
+			film.setBudget(Integer.parseInt(request.getParameter("add_budget").toString()));
+			film.setMontantRecette(Integer.parseInt(request.getParameter("add_recette").toString()));
+			int idRealisateur = Integer.parseInt(request.getParameter("add_realisateur").toString());
+			String idCategorie = (request.getParameter("add_categorie").toString());
+				
+			Realisateur realisateur = new Realisateur();
+			Categorie categorie = new Categorie();
+			
+			String ressource1 = "categories/"+idCategorie;
+			Gson gson = new Gson();
+			Appel unAppel = new Appel();
+			reponse = unAppel.appelJson(ressource1);
+			categorie = gson.fromJson(reponse, Categorie.class);
+			
+			String ressource2 = "realisateurs/"+idRealisateur;
+			reponse = unAppel.appelJson(ressource2);
+			realisateur = gson.fromJson(reponse, Realisateur.class);
+			film.setRealisateur(realisateur);
+			film.setCategorie(categorie);
+						
+			String ressource = "/films/" + film;
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, film);
+			
 			destinationPage = "/listerfilms.jsp";
 		}
 		if (EDIT_FILM.equals(actionName)) {
 			destinationPage = "/editfilm.jsp";
 		}
+		if (INFOS_FILM.equals(actionName)) {
+			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
+			
+			destinationPage = "/infosfilm.jsp";
+		}
 		if (DELETE_FILM.equals(actionName)) {
 			String ressource = "films/deleteFilm";
 			try {
-				Appel unAppel = new Appel();
-				reponse = unAppel.appelJson(ressource);
-				Gson gson = new Gson();
-				List<Film> json = gson.fromJson(reponse, List.class);
-				request.setAttribute("mesFilms", json);
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";

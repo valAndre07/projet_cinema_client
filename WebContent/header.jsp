@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap-responsive.css">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="css/custom-styles.css">
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="css/component.css">
@@ -52,6 +53,7 @@
 
 <script src="js/jquery-1.9.1.js"></script> 
 <script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
 <script src="js/masonry.pkgd.min.js"></script>
 <script src="js/imagesloaded.js"></script>
 <script src="js/classie.js"></script>

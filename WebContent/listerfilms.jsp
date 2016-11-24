@@ -38,7 +38,7 @@
             <tbody>
 				<c:forEach var="film" items="${mesFilms}"  >
 	                <tr>
-	                    <td>${film.titre}</td>
+	                    <td><a href="Controleur?action=infosFilm&idFilm=${film.noFilm}">${film.titre}</a></td>
 	                    <td>${film.duree}</td>
 	                    <td>${film.dateSortie}</td>
 	                    <td>${film.budget}</td>
