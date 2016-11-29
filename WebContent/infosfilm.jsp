@@ -22,7 +22,7 @@
 	    	<p>Date de sortie : ${film.dateSortie}</p>
 	    	<p>Budget : ${film.budget}</p>
 	    	<p>Recette : ${film.montantRecette} €</p>
-	    	<p>Réalisateur : ${film.realisateur.nomRealisateur}</p>
+	    	<p>Réalisateur : ${film.realisateur.nomRealisateur} ${film.realisateur.prenomRealisateur}</p>
 	    	<p>Catégorie : ${film.categorie.libelleCat}</p>
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6">

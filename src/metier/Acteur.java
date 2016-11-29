@@ -6,7 +6,7 @@ public class Acteur {
 
 	private int noAct;
 	private String nomAct;
-	private String prenomAct;
+	private String prenAct;
 	private Date dateNaiss;
 	private Date dateDeces;
 	
@@ -23,10 +23,10 @@ public class Acteur {
 		this.nomAct = nomActeur;
 	}
 	public String getPrenomActeur() {
-		return prenomAct;
+		return prenAct;
 	}
 	public void setPrenomActeur(String prenomActeur) {
-		this.prenomAct = prenomActeur;
+		this.prenAct = prenomActeur;
 	}
 	public Date getDateNaissance() {
 		return dateNaiss;

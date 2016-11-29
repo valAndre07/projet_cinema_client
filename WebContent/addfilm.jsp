@@ -21,8 +21,8 @@
     <input type="search" class="form-control" name="add_titre" placeholder="Titre" required="true">
     <input type="search" class="form-control" name="add_duree" placeholder="Durée en minutes" required="true">
     <input type='search' class="form-control" name="add_date" id='datetimepicker' placeholder="Date de sortie" required="true">
-    <input type="search" class="form-control" name="add_budget" placeholder="Budget" required="true">
-    <input type="search" class="form-control" name="add_recette" placeholder="Recette" required="true">
+    <input type="search" class="form-control" name="add_budget" placeholder="Budget en €" required="true">
+    <input type="search" class="form-control" name="add_recette" placeholder="Recette en €" required="true">
     <div class="form-group">
     <label for="exampleSelect1">Réalisateur</label>
     <select class="form-control" name="add_realisateur">
@@ -58,7 +58,8 @@
         function valider() {
         	if ($('#formFilm input[name=add_titre]').val() != '' && $('#formFilm input[name=add_duree]').val() != '' && 
         			$('#formFilm input[name=date]').val() != '' && $('#formFilm input[name=add_budget]').val() != '' && 
-        			$('#formFilm input[name=add_recette]').val() != '')
+        			$('#formFilm input[name=add_recette]').val() != '' && $.isNumeric($('#formFilm input[name=add_recette]').val())
+        			&& $.isNumeric($('#formFilm input[name=add_duree]').val()) && $.isNumeric($('#formFilm input[name=add_budget]').val()))
         	{
         		return true;
         	}
