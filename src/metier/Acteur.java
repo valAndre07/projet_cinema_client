@@ -1,12 +1,14 @@
 package metier;
 
+import java.util.Date;
+
 public class Acteur {
 
 	private int noAct;
 	private String nomAct;
 	private String prenomAct;
-	private String dateNaiss;
-	private String dateDeces;
+	private Date dateNaiss;
+	private Date dateDeces;
 	
 	public int getNoActeur() {
 		return noAct;
@@ -26,16 +28,16 @@ public class Acteur {
 	public void setPrenomActeur(String prenomActeur) {
 		this.prenomAct = prenomActeur;
 	}
-	public String getDateNaissance() {
+	public Date getDateNaissance() {
 		return dateNaiss;
 	}
-	public void setDateNaissance(String dateNaissance) {
+	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaiss = dateNaissance;
 	}
-	public String getDateDeces() {
+	public Date getDateDeces() {
 		return dateDeces;
 	}
-	public void setDateDeces(String dateDeces) {
+	public void setDateDeces(Date dateDeces) {
 		this.dateDeces = dateDeces;
 	}
 	

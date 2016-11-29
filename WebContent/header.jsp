@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="css/component.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+<link rel="stylesheet" href="css/datatables.css">
 
 
 
@@ -31,7 +31,7 @@
    <div class="menu">
        <div class="navbar">
                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                   <i class="fw-icon-th-list">▼</i>
+                   <span class="glyphicon glyphicon-chevron-down"></span></i>
                </a>
                <div class="nav-collapse collapse">
                    <ul class="nav">
@@ -58,7 +58,7 @@
 <script src="js/imagesloaded.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/AnimOnScroll.js"></script>
-<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/datatables.js"></script>
     
 </body>
 </html>

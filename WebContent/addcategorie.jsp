@@ -15,14 +15,27 @@
 
 <h1 style="color:white; text-align:center;">Ajout d'une catégorie</h1>
 <br>
-<form action="Controleur?action=" method="post" style="text-align:center;">
+<form id="formCategorie" action="Controleur?action=addCategorie" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
-    <input type="search" class="form-control" id="add_libelle" placeholder="Libelle">
-  
+    <input type="search" class="form-control" name="add_libelle" placeholder="Libelle" required="true">
   </div>
   <br>
   <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
+<script type="text/javascript">
+        function valider() {
+        	if ($('#formCategorie input[name=add_libelle]').val() != '')
+        	{
+        		return true;
+        	}
+        	else
+        	{
+        		alert("Le champ n'est pas rempli correctement !");
+        		return false;
+        	}
+            
+        }
+</script>
 </body>
 </html>

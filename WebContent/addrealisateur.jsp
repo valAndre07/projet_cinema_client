@@ -15,15 +15,29 @@
 
 <h1 style="color:white; text-align:center;">Ajout d'un réalisateur</h1>
 <br>
-<form action="Controleur?action=" method="post" style="text-align:center;">
+<form id="formRealisateur" action="Controleur?action=addRealisateur" method="post" style="text-align:center;" onsubmit="return valider()">
   <div class="form-group">
-    <input type="search" class="form-control" name="add_nom" placeholder="Nom">
-    <input type="search" class="form-control" name="add_prenom" placeholder="Prenom">
-   
+    <input type="search" class="form-control" name="add_nom" placeholder="Nom" required="true">
+    <input type="search" class="form-control" name="add_prenom" placeholder="Prenom" required="true">
   </div>
   <br>
   <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
+<script type="text/javascript">
+        function valider() {
+        	if ($('#formRealisateur input[name=add_nom]').val() != '' && $('#formRealisateur input[name=add_prenom]').val() != '')
+        	{
+        		return true;
+        	}
+        	else
+        	{
+        		alert("Un des champs n'est pas rempli correctement !");
+        		return false;
+        	}
+            
+        }
+</script>
+    
 </body>
 </html>

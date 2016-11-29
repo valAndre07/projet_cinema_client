@@ -15,17 +15,43 @@
 
 <h1 style="color:white; text-align:center;">Ajout d'un acteur</h1>
 <br>
-<form action="Controleur?action=" method="post" style="text-align:center;">
+<form id="formActeur" action="Controleur?action=addActeur" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
-    <input type="search" class="form-control" id="add_nom" placeholder="Nom">
-    <input type="search" class="form-control" id="add_prenom" placeholder="Prénom">
-    <input type="search" class="form-control" id="add_date_naissance" placeholder="Date naissance">
-    <input type="search" class="form-control" id="add_date_deces" placeholder="Date décès">
+    <input type="search" class="form-control" name="add_nom" placeholder="Nom" required="true">
+    <input type="search" class="form-control" name="add_prenom" placeholder="Prénom" required="true">
+    <input type="search" class="form-control" id='datetimepickernaissance' name="add_date_naissance" placeholder="Date naissance" required="true">
+    <input type="search" class="form-control" id='datetimepickerdeces' name="add_date_deces" placeholder="Date décès" required="true">
     
   </div>
   <br>
   <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
+<script type="text/javascript">
+        
+        $(document).ready(function() {
+        	$('#datetimepickernaissance').datepicker({
+                startView: 2
+            });
+        	$('#datetimepickerdeces').datepicker({
+                startView: 2
+            });
+        });
+        
+        function valider() {
+        	if ($('#formActeur input[name=add_nom]').val() != '' && $('#formActeur input[name=add_prenom]').val() != '' && 
+        		$('#formActeur input[name=add_date_naissance]').val() != '' && $('#formActeur input[name=add_date_deces]').val() != '')
+        	{
+        		return true;
+        	}
+        	else
+        	{
+        		alert("Un des champs n'est pas rempli correctement !");
+        		return false;
+        	}
+            
+        }
+</script>
+    
 </body>
 </html>

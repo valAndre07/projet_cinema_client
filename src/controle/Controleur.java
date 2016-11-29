@@ -50,6 +50,7 @@ public class Controleur extends HttpServlet {
 	private static final String LISTER_REALISATEURS = "listerRealisateurs";
 	private static final String ADD_REALISATEUR_FORM = "addRealisateurForm";
 	private static final String ADD_REALISATEUR = "addRealisateur";
+	private static final String INFOS_REALISATEUR = "infosRealisateur";
 	private static final String EDIT_REALISATEUR = "editRealisateur";
 	private static final String DELETE_REALISATEUR = "deleteRealisateur";
 	private static final String LISTER_ACTEURS = "listerActeurs";
@@ -58,6 +59,8 @@ public class Controleur extends HttpServlet {
 	private static final String LISTER_CATEGORIES = "listerCategories";
 	private static final String ADD_CATEGORIE_FORM = "addCategorieForm";
 	private static final String ADD_CATEGORIE = "addCategorie";
+	private static final String LINK_PERSONNAGE_FORM = "linkPersonnageForm";
+	private static final String LINK_PERSONNAGE = "linkPersonnage";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -113,7 +116,6 @@ public class Controleur extends HttpServlet {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource);
 				String recup = reponse.substring(8, reponse.length()-1);
-				System.out.println(recup);
 				Gson gson = new Gson();
 				try
 				{
@@ -145,13 +147,11 @@ public class Controleur extends HttpServlet {
 					String recup = reponse.substring(15, reponse.length()-1);
 					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
 					ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
-					System.out.println(realisateurs.get(1).getNomRealisateur());
 					
 					reponse = unAppel.appelJson(ressource2);
 					recup = reponse.substring(13, reponse.length()-1);
 					TypeToken<ArrayList<Categorie>> token2 = new TypeToken<ArrayList<Categorie>>(){};
 					ArrayList<Categorie> categories = gson.fromJson(recup, token2.getType());
-					System.out.println(categories.get(1).getLibelleCat());
 					
 					request.setAttribute("mesRealisateurs", realisateurs);
 					request.setAttribute("mesCategories", categories);
@@ -201,6 +201,21 @@ public class Controleur extends HttpServlet {
 		}
 		if (INFOS_FILM.equals(actionName)) {
 			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
+			String ressource1 = "films/"+idFilm;
+			
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				Film film = gson.fromJson(reponse, Film.class);
+				
+				request.setAttribute("film", film);
+				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					destinationPage = "/index.jsp";
+					request.setAttribute("MesErreurs", e.getMessage());
+				}
 			
 			destinationPage = "/infosfilm.jsp";
 		}
@@ -243,10 +258,37 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/addrealisateur.jsp";
 		}
 		if (ADD_REALISATEUR.equals(actionName)) {
+			
 			Realisateur realisateur = new Realisateur();
 			realisateur.setPrenomRealisateur(request.getParameter("add_prenom").toString());
 			realisateur.setNomRealisateur(request.getParameter("add_nom").toString());
+			
+			Appel unAppel = new Appel();
+			String ressource = "/realisateurs/" + realisateur;
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, realisateur);
+			
 			destinationPage = "/listerrealisateurs.jsp";
+		}
+		if (INFOS_REALISATEUR.equals(actionName)) {
+			int idRealisateur = Integer.parseInt((request.getParameter("idRealisateur").toString()));
+			String ressource1 = "realisateurs/"+idRealisateur;
+			
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				Realisateur realisateur = gson.fromJson(reponse,Realisateur.class);
+				
+				request.setAttribute("realisateur", realisateur);
+				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					destinationPage = "/index.jsp";
+					request.setAttribute("MesErreurs", e.getMessage());
+				}
+			
+			destinationPage = "/infosrealisateur.jsp";
 		}
 		if (EDIT_REALISATEUR.equals(actionName)) {
 			destinationPage = "/editrealisateur.jsp";
@@ -264,7 +306,6 @@ public class Controleur extends HttpServlet {
 				String recup = reponse.substring(10, reponse.length()-1);
 				TypeToken<ArrayList<Acteur>> token = new TypeToken<ArrayList<Acteur>>(){};
 				ArrayList<Acteur> acteurs = gson.fromJson(recup, token.getType());
-				System.out.println(recup);
 				try
 				{
 					request.setAttribute("mesActeurs", acteurs);
@@ -284,11 +325,23 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/addacteur.jsp";
 		}
 		if (ADD_ACTEUR.equals(actionName)) {
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 			Acteur acteur = new Acteur();
 			acteur.setNomActeur(request.getParameter("add_nom").toString());
 			acteur.setPrenomActeur(request.getParameter("add_prenom").toString());
-			//acteur.setDateNaissance(dateNaissance);
-			//acteur.setDateDeces(dateDeces);
+			acteur.setDateNaissance(formatter.parse(request.getParameter("add_date_naissance").toString()));
+			acteur.setDateDeces(formatter.parse(request.getParameter("add_date_deces").toString()));
+			
+			System.out.println(acteur.getNomActeur());
+			System.out.println(acteur.getPrenomActeur());
+			System.out.println(acteur.getDateDeces());
+			System.out.println(acteur.getDateNaissance());
+			
+			Appel unAppel = new Appel();
+			String ressource = "/acteurs/" + acteur;
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, acteur);
+			
 			destinationPage = "/listeracteurs.jsp";
 		}
 		if (LISTER_CATEGORIES.equals(actionName)) {
@@ -321,8 +374,77 @@ public class Controleur extends HttpServlet {
 		}
 		if (ADD_CATEGORIE.equals(actionName)) {
 			Categorie categorie = new Categorie();
+			
 			categorie.setLibelleCat(request.getParameter("add_libelle").toString());
+			Appel unAppel = new Appel();
+			String ressource = "/categories/" + categorie;
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, categorie);
+						
 			destinationPage = "/listercategories.jsp";
+		}
+		if (LINK_PERSONNAGE_FORM.equals(actionName)) {
+			String ressource1 = "films/listeFilms";
+			String ressource2 = "acteurs/listeActeurs";
+			try {
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				String recup = reponse.substring(8, reponse.length()-1);
+				Gson gson = new Gson();
+				try
+				{
+					TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
+					ArrayList<Film> films = gson.fromJson(recup, token.getType());
+					
+					request.setAttribute("mesFilms", films);
+					
+					reponse = unAppel.appelJson(ressource2);
+					recup = reponse.substring(10, reponse.length()-1);
+					TypeToken<ArrayList<Acteur>> token2 = new TypeToken<ArrayList<Acteur>>(){};
+					ArrayList<Acteur> acteurs = gson.fromJson(recup, token2.getType());
+					request.setAttribute("mesActeurs", acteurs);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+			destinationPage = "/linkpersonnage.jsp";
+		}
+		if (LINK_PERSONNAGE.equals(actionName)) {
+			
+			int idActeur = Integer.parseInt(request.getParameter("add_acteur").toString());
+			int idFilm = Integer.parseInt(request.getParameter("add_film").toString());
+				
+			Acteur acteur = new Acteur();
+			Film film = new Film();
+			
+			String ressource1 = "films/"+idFilm;
+			Gson gson = new Gson();
+			Appel unAppel = new Appel();
+			reponse = unAppel.appelJson(ressource1);
+			film = gson.fromJson(reponse, Film.class);
+			
+			String ressource2 = "acteurs/"+idActeur;
+			reponse = unAppel.appelJson(ressource2);
+			acteur = gson.fromJson(reponse, Acteur.class);
+
+			Personnage personnage = new Personnage();
+			personnage.setActeur(acteur);
+			personnage.setFilm(film);
+			personnage.setNomPersonnage(request.getParameter("link_personnage").toString());
+			
+			System.out.println(personnage.getNomPersonnage());
+			System.out.println(personnage.getActeur().getNomActeur());
+			System.out.println(personnage.getFilm().getTitre());
+			String ressource = "/personnages/" + personnage;
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, personnage);			
+			destinationPage = "/listeracteurs.jsp";
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";

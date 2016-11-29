@@ -3,7 +3,14 @@
 	overflow-x: auto;
 	white-space: nowrap;
 }
-
+h2
+{
+	color : white;
+}
+p
+{
+	color : white;
+}
 div#table_id_info.dataTables_info
 {
 	color:white;

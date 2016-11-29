@@ -13,9 +13,22 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">Informations du film</h1>
+<h1 style="color:white; text-align:center;">${film.titre}</h1>
 <br>
-
-
+<div class="container">
+	<div class="row">
+	    <div class="col-xs-6 col-sm-6 col-md-6">
+	    	<p>Durée : ${film.duree} minutes</p>
+	    	<p>Date de sortie : ${film.dateSortie}</p>
+	    	<p>Budget : ${film.budget}</p>
+	    	<p>Recette : ${film.montantRecette} €</p>
+	    	<p>Réalisateur : ${film.realisateur.nomRealisateur}</p>
+	    	<p>Catégorie : ${film.categorie.libelleCat}</p>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<h2>Acteurs - Personnages</h2>
+		</div>
+	</div>
+</div>
 </body>
 </html>

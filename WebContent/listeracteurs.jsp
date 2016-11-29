@@ -18,6 +18,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
 		<a href="Controleur?action=addActeurForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un acteur</button></a>
+		<a href="Controleur?action=linkPersonnageForm"><button type="submit" class="btn btn-primary btn-large">Lier à un personnage</button></a>
 	</div>
 </div>
 
@@ -27,7 +28,6 @@
         <table class="display" id="table_id">
             <thead>
             <tr>
-            	<th>No</th>
 			     <th>Nom</th>
 			     <th>Prénom</th>
 			     <th>Date naissance</th>
@@ -38,7 +38,6 @@
             <tbody>
 				<c:forEach var="acteur" items="${mesActeurs}"  >
 	                <tr>
-	                	<td>${acteur.noActeur}</td>
 					    <td>${acteur.nomActeur}</td>
 					    <td>${acteur.prenomActeur}</td>
 					    <td>${acteur.dateNaissance}</td>
