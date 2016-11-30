@@ -17,7 +17,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
-		<a href="Controleur?action=addFilmForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un film</button></a>
+		<a href="ControleurFilm?action=addFilmForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un film</button></a>
 	</div>
 </div>
 <div class="row">
@@ -39,7 +39,7 @@
             <tbody>
 				<c:forEach var="film" items="${mesFilms}"  >
 	                <tr>
-	                    <td><a href="Controleur?action=infosFilm&idFilm=${film.noFilm}">${film.titre}</a></td>
+	                    <td><a href="ControleurFilm?action=infosFilm&idFilm=${film.noFilm}">${film.titre}</a></td>
 	                    <td>${film.duree} min</td>
 	                    <td>${film.dateSortie}</td>
 	                    <td>${film.budget} €</td>
@@ -47,8 +47,8 @@
 	                    <td>${film.realisateur.nomRealisateur}</td>
 	                    <td>${film.categorie.libelleCat}</td>
 	                    <td style="text-align: center;">
-	                        <a href="Controleur?action=editFilm&idFilm=${film.noFilm}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-	                        <a href="Controleur?action=deleteFilm&idFilm=${film.noFilm}" data-confirm="Etes vous sûr de vouloir supprimer ce film ?">
+	                        <a href="ControleurFilm?action=editFilm&idFilm=${film.noFilm}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+	                        <a href="ControleurFilm?action=deleteFilm&idFilm=${film.noFilm}" data-confirm="Etes vous sûr de vouloir supprimer ce film ?">
 	                            <span class="glyphicon glyphicon-trash"></span>
 	                        </a>
 	                    </td>

@@ -15,7 +15,7 @@
 
 <h1 style="color:white; text-align:center;">Ajout d'un acteur</h1>
 <br>
-<form id="formActeur" action="Controleur?action=addActeur" onsubmit="return valider()" method="post" style="text-align:center;">
+<form id="formActeur" action="ControleurActeur?action=addActeur" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
     <input type="search" class="form-control" name="add_nom" placeholder="Nom" required="true">
     <input type="search" class="form-control" name="add_prenom" placeholder="Prénom" required="true">

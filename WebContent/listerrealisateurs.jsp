@@ -17,7 +17,7 @@
 <br><br><br><br>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
-		<a href="Controleur?action=addRealisateurForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un réalisateur</button></a>
+		<a href="ControleurRealisateur?action=addRealisateurForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un réalisateur</button></a>
 	</div>
 </div>
 
@@ -35,11 +35,11 @@
             <tbody>
 				<c:forEach items="${mesRealisateurs}" var="realisateur" >
                 <tr>
-				    <td><a href="Controleur?action=infosRealisateur&idRealisateur=${realisateur.noRealisateur}">${realisateur.nomRealisateur}</a></td>
+				    <td><a href="ControleurRealisateur?action=infosRealisateur&idRealisateur=${realisateur.noRealisateur}">${realisateur.nomRealisateur}</a></td>
 				    <td>${realisateur.prenomRealisateur}</td>
                     <td style="text-align: center;">
-                        <a href="/Controleur?action=editRealisateur&idRealisateur=${realisateur.noRealisateur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="/Controleur?action=deleteRealisateur&idRealisateur=${realisateur.noRealisateur}" data-confirm="Etes vous sûr de vouloir supprimer ce réalisateur ? ">
+                        <a href="/ControleurRealisateur?action=editRealisateur&idRealisateur=${realisateur.noRealisateur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+                        <a href="/ControleurRealisateur?action=deleteRealisateur&idRealisateur=${realisateur.noRealisateur}" data-confirm="Etes vous sûr de vouloir supprimer ce réalisateur ? ">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>

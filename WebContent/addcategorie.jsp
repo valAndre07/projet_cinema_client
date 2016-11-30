@@ -15,7 +15,7 @@
 
 <h1 style="color:white; text-align:center;">Ajout d'une catégorie</h1>
 <br>
-<form id="formCategorie" action="Controleur?action=addCategorie" onsubmit="return valider()" method="post" style="text-align:center;">
+<form id="formCategorie" action="ControleurCategorie?action=addCategorie" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
     <input type="search" class="form-control" name="add_libelle" placeholder="Libelle" required="true">
   </div>

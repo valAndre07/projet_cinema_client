@@ -70,12 +70,14 @@ public class Appel {
 		
 		WebTarget target = Consommateur.get().target;
 		target = target.path(action);
-		System.out.println(" uri :"  + target.getUri());
+		System.out.println(" uri :" + target.getUri());
 		Gson gson = new Gson();
 		String json=gson.toJson(unObj);
+		System.out.println(" json :"  + json);
+		target.request(MediaType.APPLICATION_JSON).header("Content-Type", "application/json");
 		Response response = target.request(MediaType.APPLICATION_JSON)
 	               .post(Entity.entity(json, MediaType.APPLICATION_JSON),Response.class);
-	              
+	     System.out.println(response.getStatus());       
 		 if(response.getStatus() >= 200 && response.getStatus() <= 299) {
 			 return "Mise à jour effectuée";
 		 }

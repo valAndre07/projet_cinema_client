@@ -18,7 +18,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
-		<a href="Controleur?action=addCategorieForm"><button type="submit" class="btn btn-primary btn-large">Ajouter une catégorie</button></a>
+		<a href="ControleurCategorie?action=addCategorieForm"><button type="submit" class="btn btn-primary btn-large">Ajouter une catégorie</button></a>
 	</div>
 </div>
 <div class="row">
@@ -38,8 +38,8 @@
 				    <td>${categorie.codeCat}</td>
 				    <td>${categorie.libelleCat}</td>
                     <td style="text-align: center;">
-                        <a href="/Controleur?action=editCategorie&codeCat=${categorie.codeCat}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="/Controleur?action=deleteCategorie&codeCat=${categorie.codeCat}" data-confirm="Etes vous sûr de vouloir supprimer cette categorie ?">
+                        <a href="/ControleurCategorie?action=editCategorie&codeCat=${categorie.codeCat}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+                        <a href="/ControleurCategorie?action=deleteCategorie&codeCat=${categorie.codeCat}" data-confirm="Etes vous sûr de vouloir supprimer cette categorie ?">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>

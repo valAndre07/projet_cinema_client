@@ -16,7 +16,7 @@
 
 <h1 style="color:white; text-align:center;">Ajout du film</h1>
 <br>
-<form id="formFilm" action="Controleur?action=addFilm" onsubmit="return valider()" method="post" style="text-align:center;">
+<form id="formFilm" action="ControleurFilm?action=addFilm" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
     <input type="search" class="form-control" name="add_titre" placeholder="Titre" required="true">
     <input type="search" class="form-control" name="add_duree" placeholder="Durée en minutes" required="true">

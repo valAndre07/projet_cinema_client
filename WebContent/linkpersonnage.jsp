@@ -16,7 +16,7 @@
 
 <h1 style="color:white; text-align:center;">Créer un personnage</h1>
 <br>
-<form id="formPersonnage" action="Controleur?action=linkPersonnage" onsubmit="return valider()" method="post" style="text-align:center;">
+<form id="formPersonnage" action="ControleurPersonnage?action=linkPersonnage" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">    
     <div class="form-group">
     <label for="exampleSelect1">Film</label>

@@ -15,7 +15,7 @@
 
 <h1 style="color:white; text-align:center;">Ajout d'un réalisateur</h1>
 <br>
-<form id="formRealisateur" action="Controleur?action=addRealisateur" method="post" style="text-align:center;" onsubmit="return valider()">
+<form id="formRealisateur" action="ControleurRealisateur?action=addRealisateur" method="post" style="text-align:center;" onsubmit="return valider()">
   <div class="form-group">
     <input type="search" class="form-control" name="add_nom" placeholder="Nom" required="true">
     <input type="search" class="form-control" name="add_prenom" placeholder="Prenom" required="true">

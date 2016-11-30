@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PolyCiné</title>
 
-
 </head>
 
 <body style="background: url(img/banner-bg.jpg) repeat;">
@@ -17,8 +16,8 @@
 <br><br><br><br>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
-		<a href="Controleur?action=addActeurForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un acteur</button></a>
-		<a href="Controleur?action=linkPersonnageForm"><button type="submit" class="btn btn-primary btn-large">Lier à un personnage</button></a>
+		<a href="ControleurActeur?action=addActeurForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un acteur</button></a>
+		<a href="ControleurPersonnage?action=linkPersonnageForm"><button type="submit" class="btn btn-primary btn-large">Lier à un personnage</button></a>
 	</div>
 </div>
 
@@ -43,8 +42,8 @@
 					    <td>${acteur.dateNaissance}</td>
 					    <td>${acteur.dateDeces}</td>
 	                    <td style="text-align: center;">
-	                        <a href="/Controleur?action=editActeur&noActeur=${acteur.noActeur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-	                        <a href="/Controleur?action=deleteActeur&noActeur=${acteur.noActeur}" data-confirm="Etes vous sûr de vouloir supprimer cet acteur ?">
+	                        <a href="/ControleurActeur?action=editActeur&noActeur=${acteur.noActeur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+	                        <a href="/ControleurActeur?action=deleteActeur&noActeur=${acteur.noActeur}" data-confirm="Etes vous sûr de vouloir supprimer cet acteur ?">
 	                            <span class="glyphicon glyphicon-trash"></span>
 	                        </a>
 	                    </td>
