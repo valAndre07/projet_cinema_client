@@ -16,9 +16,9 @@
 
 <h1 style="color:white; text-align:center;">${film.titre}</h1>
 <br>
-<div class="container">
 	<div class="row">
-	    <div class="col-xs-6 col-sm-6 col-md-6">
+	    <div class="span6">
+	    	<h2>Informations générales</h2><br>
 	    	<p>Durée : ${film.duree} minutes</p>
 	    	<p>Date de sortie : ${film.dateSortie}</p>
 	    	<p>Budget : ${film.budget}</p>
@@ -26,13 +26,13 @@
 	    	<p>Réalisateur : ${film.realisateur.nomRealisateur} ${film.realisateur.prenomRealisateur}</p>
 	    	<p>Catégorie : ${film.categorie.libelleCat}</p>
 		</div>
-		<div class="col-xs-6 col-sm-6 col-md-6">
-			<h2>Acteurs - Personnages</h2>
-				<c:forEach var="personnage" items="${mesPersonnages}"  >
-					    <p>${personnage.acteur.nomActeur} ${personnage.nomPersonnage}</p>
-            	</c:forEach>
+		<div class="span6">
+			<h2>Acteurs - Personnages</h2><br>
+			<c:forEach var="personnage" items="${mesPersonnages}"  >
+			    <p>${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}</p>
+           	</c:forEach>
 		</div>
 	</div>
-</div>
+
 </body>
 </html>
