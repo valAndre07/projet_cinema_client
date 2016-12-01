@@ -148,7 +148,7 @@ public class ControleurPersonnage extends HttpServlet {
 			String ressource2 = "acteurs/"+idActeur;
 			reponse = unAppel.appelJson(ressource2);
 			acteur = gson.fromJson(reponse, Acteur.class);
-
+			
 			Personnage personnage = new Personnage();
 			personnage.setActeur(acteur);
 			personnage.setFilm(film);
@@ -157,10 +157,10 @@ public class ControleurPersonnage extends HttpServlet {
 			System.out.println(personnage.getNomPersonnage());
 			System.out.println(personnage.getActeur().getNomActeur());
 			System.out.println(personnage.getFilm().getTitre());
-			String ressource = "/personnages/" + personnage;
+			String ressource = "/personnages/AjoutPersonnage/";
 			unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, personnage);			
-			destinationPage = "/Controleur?action=listerActeurss";
+			destinationPage = "/ControleurActeur?action=listerActeurs";
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";

@@ -6,6 +6,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 public class Appel {
@@ -71,7 +72,9 @@ public class Appel {
 		WebTarget target = Consommateur.get().target;
 		target = target.path(action);
 		System.out.println(" uri :" + target.getUri());
-		Gson gson = new Gson();
+		
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.setDateFormat("yyyy-MM-dd").create();
 		String json=gson.toJson(unObj);
 		System.out.println(" json :"  + json);
 		target.request(MediaType.APPLICATION_JSON).header("Content-Type", "application/json");

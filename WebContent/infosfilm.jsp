@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,6 +28,9 @@
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6">
 			<h2>Acteurs - Personnages</h2>
+				<c:forEach var="personnage" items="${mesPersonnages}"  >
+					    <p>${personnage.acteur.nomActeur} ${personnage.nomPersonnage}</p>
+            	</c:forEach>
 		</div>
 	</div>
 </div>

@@ -157,11 +157,13 @@ public class ControleurFilm extends HttpServlet {
 			destinationPage = "/addfilm.jsp";
 		}
 		if (ADD_FILM.equals(actionName)) {
-			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Film film = new Film();
 			film.setTitre(request.getParameter("add_titre").toString());
 			film.setDuree(Integer.parseInt(request.getParameter("add_duree").toString()));
-			film.setDateSortie(formatter.parse(request.getParameter("add_date").toString()));
+			String date = request.getParameter("add_date");
+			String values[]  = date.split("/");
+			film.setDateSortie(formatter.parse(values[2]+"-"+values[0]+"-"+values[1]));
 			film.setBudget(Integer.parseInt(request.getParameter("add_budget").toString()));
 			film.setMontantRecette(Integer.parseInt(request.getParameter("add_recette").toString()));
 			int idRealisateur = Integer.parseInt(request.getParameter("add_realisateur").toString());
@@ -187,7 +189,7 @@ public class ControleurFilm extends HttpServlet {
 			reponse = unAppel.postJson(ressource, film);
 			System.out.println(reponse);			
 			
-			destinationPage = "/Controleur?action=listerFilms";
+			destinationPage = "/ControleurFilm?action=listerFilms";
 		}
 		if (EDIT_FILM.equals(actionName)) {
 			destinationPage = "/editfilm.jsp";
@@ -195,7 +197,7 @@ public class ControleurFilm extends HttpServlet {
 		if (INFOS_FILM.equals(actionName)) {
 			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
 			String ressource1 = "films/"+idFilm;
-			
+			String ressource2 = "films/"+idFilm+"/acteurs";
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
@@ -203,6 +205,19 @@ public class ControleurFilm extends HttpServlet {
 				Film film = gson.fromJson(reponse, Film.class);
 				
 				request.setAttribute("film", film);
+				
+				reponse = unAppel.appelJson(ressource2);
+				String recup = reponse.substring(14, reponse.length()-1);
+				System.out.println(recup);
+				TypeToken<ArrayList<Personnage>> token = new TypeToken<ArrayList<Personnage>>(){};
+				ArrayList<Personnage> personnages = gson.fromJson(recup, token.getType());
+				try
+				{
+					request.setAttribute("mesPersonnages", personnages);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
 				
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

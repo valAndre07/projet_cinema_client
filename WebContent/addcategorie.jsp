@@ -17,6 +17,7 @@
 <br>
 <form id="formCategorie" action="ControleurCategorie?action=addCategorie" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
+    <input type="search" class="form-control" name="add_code" placeholder="Code" required="true">
     <input type="search" class="form-control" name="add_libelle" placeholder="Libelle" required="true">
   </div>
   <br>
@@ -25,7 +26,7 @@
 
 <script type="text/javascript">
         function valider() {
-        	if ($('#formCategorie input[name=add_libelle]').val() != '')
+        	if ($('#formCategorie input[name=add_libelle]').val() != '' && $('#formCategorie input[name=add_code]').val() != '')
         	{
         		return true;
         	}

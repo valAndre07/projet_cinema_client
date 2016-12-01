@@ -4,7 +4,7 @@ public class Personnage {
 	
 	private Acteur acteur;
 	private Film film;
-	private String nomPersonnage;
+	private String nomPers;
 	
 	
 	public Acteur getActeur() {
@@ -20,10 +20,10 @@ public class Personnage {
 		this.film = film;
 	}
 	public String getNomPersonnage() {
-		return nomPersonnage;
+		return nomPers;
 	}
 	public void setNomPersonnage(String nomPersonnage) {
-		this.nomPersonnage = nomPersonnage;
+		this.nomPers = nomPersonnage;
 	}
 	
 	

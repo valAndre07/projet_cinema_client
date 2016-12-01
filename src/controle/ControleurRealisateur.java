@@ -141,13 +141,12 @@ public class ControleurRealisateur extends HttpServlet {
 					unAppel = new Appel();
 					reponse = unAppel.postJson(ressource, realisateur);
 					
-					destinationPage = "/Controleur?action=listerRealisateurs";
+					destinationPage = "/ControleurRealisateur?action=listerRealisateurs";
 				}
 				if (INFOS_REALISATEUR.equals(actionName)) {
 					String idRealisateur = (request.getParameter("idRealisateur").toString());
 					String ressource1 = "realisateurs/"+idRealisateur;
-					//mettre une autre ressource pour la liste des films
-					String ressource2 = "realisateurs/"+idRealisateur;
+					String ressource2 = "realisateurs/"+idRealisateur+"/films";
 					try {
 						Gson gson = new Gson();
 						Appel unAppel = new Appel();

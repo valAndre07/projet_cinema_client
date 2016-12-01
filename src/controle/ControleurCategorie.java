@@ -129,15 +129,16 @@ public class ControleurCategorie extends HttpServlet {
 			destinationPage = "/addcategorie.jsp";
 		}
 		if (ADD_CATEGORIE.equals(actionName)) {
-			Categorie categorie = new Categorie();
 			
+			Categorie categorie = new Categorie();
+			categorie.setCodeCat(request.getParameter("add_code").toString());
 			categorie.setLibelleCat(request.getParameter("add_libelle").toString());
 			Appel unAppel = new Appel();
-			String ressource = "/categories/" + categorie;
+			String ressource = "/categories/AjoutCategorie/";
 			unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, categorie);
 						
-			destinationPage = "/Controleur?action=listerCategories";
+			destinationPage = "/ControleurCategorie?action=listerCategories";
 		}
 		
 		else {
