@@ -228,15 +228,19 @@ public class ControleurFilm extends HttpServlet {
 			destinationPage = "/infosfilm.jsp";
 		}
 		if (DELETE_FILM.equals(actionName)) {
-			String ressource = "films/deleteFilm";
+			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
+			String ressource = "films/deleteFilm/"+idFilm;
 			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				unAppel.appelJson(ressource);
 				
+				destinationPage = "/ControleurFilm?action=listerFilms";
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";
 				request.setAttribute("MesErreurs", e.getMessage());
 			}
-			destinationPage = "/Controleur?action=listerFilms";
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";

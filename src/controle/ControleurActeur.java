@@ -50,6 +50,7 @@ public class ControleurActeur extends HttpServlet {
 	private static final String LISTER_ACTEURS = "listerActeurs";
 	private static final String ADD_ACTEUR_FORM = "addActeurForm";
 	private static final String ADD_ACTEUR = "addActeur";
+	private static final String DELETE_ACTEUR = "deleteActeur";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -149,8 +150,21 @@ public class ControleurActeur extends HttpServlet {
 			
 			destinationPage = "/ControleurActeur?action=listerActeurs";
 		}
-		
-		
+		if (DELETE_ACTEUR.equals(actionName)) {
+			int noActeur = Integer.parseInt((request.getParameter("noActeur").toString()));
+			String ressource = "films/deleteActeur/"+noActeur;
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				unAppel.appelJson(ressource);
+				
+				destinationPage = "/ControleurActeur?action=listerActeurs";
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
 			request.setAttribute(ERROR_KEY, messageErreur);
@@ -158,7 +172,6 @@ public class ControleurActeur extends HttpServlet {
 		// Redirection vers la page jsp appropriee
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
 		dispatcher.forward(request, response);
-		 
 		}
 }
 

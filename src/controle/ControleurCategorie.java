@@ -50,6 +50,7 @@ public class ControleurCategorie extends HttpServlet {
 	private static final String LISTER_CATEGORIES = "listerCategories";
 	private static final String ADD_CATEGORIE_FORM = "addCategorieForm";
 	private static final String ADD_CATEGORIE = "addCategorie";
+	private static final String DELETE_CATEGORIE = "deleteCategorie";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -140,7 +141,21 @@ public class ControleurCategorie extends HttpServlet {
 						
 			destinationPage = "/ControleurCategorie?action=listerCategories";
 		}
-		
+		if (DELETE_CATEGORIE.equals(actionName)) {
+			int codeCat = Integer.parseInt((request.getParameter("codeCat").toString()));
+			String ressource = "films/deleteCategorie/"+codeCat;
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				unAppel.appelJson(ressource);
+				
+				destinationPage = "/ControleurCategorie?action=listerCategories";
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
 			request.setAttribute(ERROR_KEY, messageErreur);

@@ -182,7 +182,19 @@ public class ControleurRealisateur extends HttpServlet {
 					destinationPage = "/editrealisateur.jsp";
 				}
 				if (DELETE_REALISATEUR.equals(actionName)) {
-					destinationPage = "/listerrealisateurs.jsp";
+					int idRealisateur = Integer.parseInt((request.getParameter("idRealisateur").toString()));
+					String ressource = "films/deleteRealisateur/"+idRealisateur;
+					try {
+						Gson gson = new Gson();
+						Appel unAppel = new Appel();
+						unAppel.appelJson(ressource);
+						
+						destinationPage = "/ControleurRealisateur?action=listerRealisateurs";
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						destinationPage = "/index.jsp";
+						request.setAttribute("MesErreurs", e.getMessage());
+					}
 				}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
