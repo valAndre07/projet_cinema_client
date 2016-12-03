@@ -256,7 +256,8 @@ public class ControleurFilm extends HttpServlet {
 			film.setCategorie(categorie);
 						
 			int idFilm = Integer.parseInt((request.getParameter("edit_id").toString()));
-			String ressource = "/films/EditFilm/"+idFilm;
+			film.setNoFilm(idFilm);
+			String ressource = "/films/EditFilm/";
 			unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, film);
 			System.out.println(reponse);			
