@@ -51,6 +51,7 @@ public class ControleurRealisateur extends HttpServlet {
 	private static final String ADD_REALISATEUR_FORM = "addRealisateurForm";
 	private static final String ADD_REALISATEUR = "addRealisateur";
 	private static final String INFOS_REALISATEUR = "infosRealisateur";
+	private static final String EDIT_REALISATEUR_FORM = "editRealisateurForm";
 	private static final String EDIT_REALISATEUR = "editRealisateur";
 	private static final String DELETE_REALISATEUR = "deleteRealisateur";
 
@@ -152,7 +153,6 @@ public class ControleurRealisateur extends HttpServlet {
 						Appel unAppel = new Appel();
 						reponse = unAppel.appelJson(ressource1);
 						Realisateur realisateur = gson.fromJson(reponse,Realisateur.class);
-						System.out.println(reponse);
 						request.setAttribute("realisateur", realisateur);
 						
 						reponse = unAppel.appelJson(ressource2);
@@ -178,8 +178,38 @@ public class ControleurRealisateur extends HttpServlet {
 					
 					destinationPage = "/infosrealisateur.jsp";
 				}
+				if (EDIT_REALISATEUR_FORM.equals(actionName)) {
+					try {
+						String idRealisateur = (request.getParameter("idRealisateur").toString());
+						String ressource1 = "realisateurs/"+idRealisateur;
+						
+						Gson gson = new Gson();
+						Appel unAppel = new Appel();
+						reponse = unAppel.appelJson(ressource1);
+						Realisateur realisateur = gson.fromJson(reponse,Realisateur.class);
+						
+						request.setAttribute("realisateur", realisateur);
+						
+						destinationPage = "/editrealisateur.jsp";
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						destinationPage = "/index.jsp";
+						request.setAttribute("MesErreurs", e.getMessage());
+					}
+				}
 				if (EDIT_REALISATEUR.equals(actionName)) {
-					destinationPage = "/editrealisateur.jsp";
+					Realisateur realisateur = new Realisateur();
+					realisateur.setPrenomRealisateur(request.getParameter("edit_prenom").toString());
+					realisateur.setNomRealisateur(request.getParameter("edit_nom").toString());
+					System.out.println(realisateur.getNoRealisateur());
+					Appel unAppel = new Appel();
+					
+					int idRealisateur = Integer.parseInt((request.getParameter("edit_id").toString()));
+					String ressource = "/realisateurs/editRealisateur/"+idRealisateur;
+					unAppel = new Appel();
+					reponse = unAppel.postJson(ressource, realisateur);
+					
+					destinationPage = "/ControleurRealisateur?action=listerRealisateurs";
 				}
 				if (DELETE_REALISATEUR.equals(actionName)) {
 					int idRealisateur = Integer.parseInt((request.getParameter("idRealisateur").toString()));

@@ -50,6 +50,7 @@ public class ControleurFilm extends HttpServlet {
 	private static final String LISTER_FILMS = "listerFilms";
 	private static final String ADD_FILM_FORM = "addFilmForm";
 	private static final String ADD_FILM = "addFilm";
+	private static final String EDIT_FILM_FORM = "editFilmForm";
 	private static final String EDIT_FILM = "editFilm";
 	private static final String INFOS_FILM = "infosFilm";
 	private static final String DELETE_FILM = "deleteFilm";
@@ -191,8 +192,76 @@ public class ControleurFilm extends HttpServlet {
 			
 			destinationPage = "/ControleurFilm?action=listerFilms";
 		}
-		if (EDIT_FILM.equals(actionName)) {
+		if (EDIT_FILM_FORM.equals(actionName)) {
+			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
+			String ressource0 = "films/"+idFilm;
+			String ressource1 = "realisateurs/listeRealisateurs";
+			String ressource2 = "categories/listeCategories";
+			try {
+				
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource0);
+				Film film = gson.fromJson(reponse, Film.class);
+				
+				
+					reponse = unAppel.appelJson(ressource1);
+					String recup = reponse.substring(15, reponse.length()-1);
+					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
+					ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
+					
+					reponse = unAppel.appelJson(ressource2);
+					recup = reponse.substring(13, reponse.length()-1);
+					TypeToken<ArrayList<Categorie>> token2 = new TypeToken<ArrayList<Categorie>>(){};
+					ArrayList<Categorie> categories = gson.fromJson(recup, token2.getType());
+					
+					request.setAttribute("film", film);
+					request.setAttribute("mesRealisateurs", realisateurs);
+					request.setAttribute("mesCategories", categories);
+					
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+		
 			destinationPage = "/editfilm.jsp";
+		}
+		if (EDIT_FILM.equals(actionName)) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Film film = new Film();
+			film.setTitre(request.getParameter("edit_titre").toString());
+			film.setDuree(Integer.parseInt(request.getParameter("edit_duree").toString()));
+			String date = request.getParameter("edit_date");
+			String values[]  = date.split("/");
+			film.setDateSortie(formatter.parse(values[2]+"-"+values[0]+"-"+values[1]));
+			film.setBudget(Integer.parseInt(request.getParameter("edit_budget").toString()));
+			film.setMontantRecette(Integer.parseInt(request.getParameter("edit_recette").toString()));
+			int idRealisateur = Integer.parseInt(request.getParameter("edit_realisateur").toString());
+			String idCategorie = (request.getParameter("edit_categorie").toString());
+			
+			Realisateur realisateur = new Realisateur();
+			Categorie categorie = new Categorie();
+			
+			String ressource1 = "categories/"+idCategorie;
+			Gson gson = new Gson();
+			Appel unAppel = new Appel();
+			reponse = unAppel.appelJson(ressource1);
+			categorie = gson.fromJson(reponse, Categorie.class);
+			
+			String ressource2 = "realisateurs/"+idRealisateur;
+			reponse = unAppel.appelJson(ressource2);
+			realisateur = gson.fromJson(reponse, Realisateur.class);
+			film.setRealisateur(realisateur);
+			film.setCategorie(categorie);
+						
+			int idFilm = Integer.parseInt((request.getParameter("edit_id").toString()));
+			String ressource = "/films/EditFilm/"+idFilm;
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, film);
+			System.out.println(reponse);			
+			
+			destinationPage = "/ControleurFilm?action=listerFilms";
 		}
 		if (INFOS_FILM.equals(actionName)) {
 			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
