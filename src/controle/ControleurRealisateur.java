@@ -202,12 +202,14 @@ public class ControleurRealisateur extends HttpServlet {
 					realisateur.setPrenomRealisateur(request.getParameter("edit_prenom").toString());
 					realisateur.setNomRealisateur(request.getParameter("edit_nom").toString());
 					System.out.println(realisateur.getNoRealisateur());
+					int idRealisateur = Integer.parseInt((request.getParameter("edit_id").toString()));
+					realisateur.setNoRealisateur(idRealisateur);
 					Appel unAppel = new Appel();
 					
-					int idRealisateur = Integer.parseInt((request.getParameter("edit_id").toString()));
-					String ressource = "/realisateurs/editRealisateur/"+idRealisateur;
+					
+					String ressource = "/realisateurs/editRealisateur/";
 					unAppel = new Appel();
-					reponse = unAppel.postJson(ressource, realisateur);
+					reponse = unAppel.putJson(ressource, realisateur);
 					
 					destinationPage = "/ControleurRealisateur?action=listerRealisateurs";
 				}

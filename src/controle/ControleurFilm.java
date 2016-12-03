@@ -259,7 +259,7 @@ public class ControleurFilm extends HttpServlet {
 			film.setNoFilm(idFilm);
 			String ressource = "/films/EditFilm/";
 			unAppel = new Appel();
-			reponse = unAppel.postJson(ressource, film);
+			reponse = unAppel.putJson(ressource, film);
 			System.out.println(reponse);			
 			
 			destinationPage = "/ControleurFilm?action=listerFilms";

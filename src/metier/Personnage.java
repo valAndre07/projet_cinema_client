@@ -2,10 +2,18 @@ package metier;
 
 public class Personnage {
 	
+	private PersonnagePK id;
 	private Acteur acteur;
 	private Film film;
 	private String nomPers;
 	
+	public PersonnagePK getId() {
+		return this.id;
+	}
+
+	public void setId(PersonnagePK id) {
+		this.id = id;
+	}
 	
 	public Acteur getActeur() {
 		return acteur;

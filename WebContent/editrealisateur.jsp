@@ -22,7 +22,7 @@
     <input type="search" class="form-control" name="edit_prenom" value="${ realisateur.prenRea }" placeholder="Prenom" required="true">
   </div>
   <br>
-  <button type="submit" class="btn btn-primary">Ajouter</button>
+  <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
 
 <script type="text/javascript">
