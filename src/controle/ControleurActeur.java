@@ -186,6 +186,8 @@ public class ControleurActeur extends HttpServlet {
 			String values2[]  = date_deces.split("/");
 			if (values2.length > 1) {
 				acteur.setDateDeces(formatter.parse(values2[2]+"-"+values2[0]+"-"+values2[1]));
+			} else {
+				acteur.setDateDeces(null);
 			}
 			
 			Appel unAppel = new Appel();
@@ -197,7 +199,7 @@ public class ControleurActeur extends HttpServlet {
 		}
 		if (DELETE_ACTEUR.equals(actionName)) {
 			int noActeur = Integer.parseInt((request.getParameter("noActeur").toString()));
-			String ressource = "films/deleteActeur/"+noActeur;
+			String ressource = "acteurs/deleteActeur/"+noActeur;
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();

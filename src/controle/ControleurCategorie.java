@@ -175,8 +175,8 @@ public class ControleurCategorie extends HttpServlet {
 			destinationPage = "/ControleurCategorie?action=listerCategories";
 		}
 		if (DELETE_CATEGORIE.equals(actionName)) {
-			int codeCat = Integer.parseInt((request.getParameter("codeCat").toString()));
-			String ressource = "films/deleteCategorie/"+codeCat;
+			String codeCat = (request.getParameter("codeCat").toString());
+			String ressource = "categories/deleteCategorie/"+codeCat;
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
