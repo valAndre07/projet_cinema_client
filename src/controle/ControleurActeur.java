@@ -174,18 +174,19 @@ public class ControleurActeur extends HttpServlet {
 		if (EDIT_ACTEUR.equals(actionName)) {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Acteur acteur = new Acteur();
-			acteur.setNomActeur(request.getParameter("add_nom").toString());
-			acteur.setPrenomActeur(request.getParameter("add_prenom").toString());
-			String date_naissance = request.getParameter("add_date_naissance");
+			acteur.setNomActeur(request.getParameter("edit_nom").toString());
+			acteur.setPrenomActeur(request.getParameter("edit_prenom").toString());
+			String date_naissance = request.getParameter("edit_date_naissance");
 			String values[]  = date_naissance.split("/");
 			acteur.setDateNaissance(formatter.parse(values[2]+"-"+values[0]+"-"+values[1]));
-			String date_deces = request.getParameter("add_date_deces");
+			String date_deces = request.getParameter("edit_date_deces");
 			String values2[]  = date_deces.split("/");
-			acteur.setDateDeces(formatter.parse(values2[2]+"-"+values2[0]+"-"+values2[1]));
-			
+			if (values2.length > 1) {
+				acteur.setDateDeces(formatter.parse(values2[2]+"-"+values2[0]+"-"+values2[1]));
+			}
 			
 			Appel unAppel = new Appel();
-			String ressource = "/acteurs/AjoutActeur/";
+			String ressource = "/acteurs/EditActeur/";
 			unAppel = new Appel();
 			reponse = unAppel.putJson(ressource, acteur);
 			

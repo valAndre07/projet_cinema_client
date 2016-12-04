@@ -17,9 +17,9 @@
 <br>
 <form id="formActeur" action="ControleurActeur?action=editActeur" onsubmit="return valider()" method="post" style="text-align:center;">
   <div class="form-group">
-    <input type="hidden" class="form-control" name="edit_id" placeholder="id" value="${acteur.noAct}" required="true">
+    <input type="hidden" class="form-control" name="edit_id" placeholder="id" value="${acteur.noActeur}" required="true">
     <input type="search" class="form-control" value="${acteur.nomActeur}" name="edit_nom" placeholder="Nom" required="true">
-    <input type="search" class="form-control" value="${acteur.prenActeur}" name="edit_prenom" placeholder="Prénom" required="true">
+    <input type="search" class="form-control" value="${acteur.prenomActeur}" name="edit_prenom" placeholder="Prénom" required="true">
     <input type="search" class="form-control" value="${acteur.dateNaissance}" id='datetimepickernaissance' name="edit_date_naissance" placeholder="Date naissance" required="true">
     <input type="search" class="form-control" value="${acteur.dateDeces}" id='datetimepickerdeces' name="edit_date_deces" placeholder="Date décès" required="false">
     
