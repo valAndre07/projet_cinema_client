@@ -50,6 +50,8 @@ public class ControleurCategorie extends HttpServlet {
 	private static final String LISTER_CATEGORIES = "listerCategories";
 	private static final String ADD_CATEGORIE_FORM = "addCategorieForm";
 	private static final String ADD_CATEGORIE = "addCategorie";
+	private static final String EDIT_CATEGORIE_FORM = "editCategorieForm";
+	private static final String EDIT_CATEGORIE = "editCategorie";
 	private static final String DELETE_CATEGORIE = "deleteCategorie";
 
 	/**
@@ -138,6 +140,37 @@ public class ControleurCategorie extends HttpServlet {
 			String ressource = "/categories/AjoutCategorie/";
 			unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, categorie);
+						
+			destinationPage = "/ControleurCategorie?action=listerCategories";
+		}
+		if (EDIT_CATEGORIE_FORM.equals(actionName)) {
+			String idCat = (request.getParameter("codeCat").toString());
+			String ressource1 = "categories/"+idCat;
+			
+			try {
+				
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				Categorie categorie = gson.fromJson(reponse, Categorie.class);
+			
+				request.setAttribute("categorie", categorie);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+			destinationPage = "/editcategorie.jsp";
+		}
+		if (EDIT_CATEGORIE.equals(actionName)) {
+			
+			Categorie categorie = new Categorie();
+			categorie.setCodeCat(request.getParameter("edit_code").toString());
+			categorie.setLibelleCat(request.getParameter("edit_libelle").toString());
+			Appel unAppel = new Appel();
+			String ressource = "/categories/EditCategorie/";
+			unAppel = new Appel();
+			reponse = unAppel.putJson(ressource, categorie);
 						
 			destinationPage = "/ControleurCategorie?action=listerCategories";
 		}

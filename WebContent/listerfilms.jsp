@@ -48,9 +48,7 @@
 	                    <td>${film.categorie.libelleCat}</td>
 	                    <td style="text-align: center;">
 	                        <a href="ControleurFilm?action=editFilmForm&idFilm=${film.noFilm}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-	                        <a href="ControleurFilm?action=deleteFilm&idFilm=${film.noFilm}" data-confirm="Etes vous sûr de vouloir supprimer ce film ?">
-	                            <span class="glyphicon glyphicon-trash"></span>
-	                        </a>
+	                        <a href="ControleurFilm?action=deleteFilm&idFilm=${film.noFilm}"><span class="glyphicon glyphicon-trash"></span></a>
 	                    </td>
 	                </tr>
 	            </c:forEach>

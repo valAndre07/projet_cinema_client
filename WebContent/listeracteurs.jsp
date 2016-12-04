@@ -42,8 +42,8 @@
 					    <td>${acteur.dateNaissance}</td>
 					    <td>${acteur.dateDeces}</td>
 	                    <td style="text-align: center;">
-	                        <a href="/ControleurActeur?action=editActeur&noActeur=${acteur.noActeur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-	                        <a href="/ControleurActeur?action=deleteActeur&noActeur=${acteur.noActeur}" data-confirm="Etes vous sûr de vouloir supprimer cet acteur ?">
+	                        <a href="ControleurActeur?action=editActeurForm&noActeur=${acteur.noActeur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+	                        <a href="ControleurActeur?action=deleteActeur&noActeur=${acteur.noActeur}" data-confirm="Etes vous sûr de vouloir supprimer cet acteur ?">
 	                            <span class="glyphicon glyphicon-trash"></span>
 	                        </a>
 	                    </td>

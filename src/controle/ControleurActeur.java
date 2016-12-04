@@ -50,6 +50,8 @@ public class ControleurActeur extends HttpServlet {
 	private static final String LISTER_ACTEURS = "listerActeurs";
 	private static final String ADD_ACTEUR_FORM = "addActeurForm";
 	private static final String ADD_ACTEUR = "addActeur";
+	private static final String EDIT_ACTEUR_FORM = "editActeurForm";
+	private static final String EDIT_ACTEUR = "editActeur";
 	private static final String DELETE_ACTEUR = "deleteActeur";
 
 	/**
@@ -131,6 +133,29 @@ public class ControleurActeur extends HttpServlet {
 			destinationPage = "/addacteur.jsp";
 		}
 		if (ADD_ACTEUR.equals(actionName)) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Acteur acteur = new Acteur();
+			acteur.setNomActeur(request.getParameter("add_nom").toString());
+			acteur.setPrenomActeur(request.getParameter("add_prenom").toString());
+			String date_naissance = request.getParameter("add_date_naissance");
+			String values[]  = date_naissance.split("/");
+			acteur.setDateNaissance(formatter.parse(values[2]+"-"+values[0]+"-"+values[1]));
+			String date_deces = request.getParameter("add_date_deces");
+			String values2[]  = date_deces.split("/");
+			acteur.setDateDeces(formatter.parse(values2[2]+"-"+values2[0]+"-"+values2[1]));
+			
+			
+			Appel unAppel = new Appel();
+			String ressource = "/acteurs/AjoutActeur/";
+			unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, acteur);
+			
+			destinationPage = "/ControleurActeur?action=listerActeurs";
+		}
+		if (EDIT_ACTEUR_FORM.equals(actionName)) {
+			destinationPage = "/addacteur.jsp";
+		}
+		if (EDIT_ACTEUR.equals(actionName)) {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Acteur acteur = new Acteur();
 			acteur.setNomActeur(request.getParameter("add_nom").toString());

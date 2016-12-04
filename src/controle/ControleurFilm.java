@@ -239,6 +239,8 @@ public class ControleurFilm extends HttpServlet {
 			film.setMontantRecette(Integer.parseInt(request.getParameter("edit_recette").toString()));
 			int idRealisateur = Integer.parseInt(request.getParameter("edit_realisateur").toString());
 			String idCategorie = (request.getParameter("edit_categorie").toString());
+			int idFilm = Integer.parseInt((request.getParameter("edit_id").toString()));
+			film.setNoFilm(idFilm);
 			
 			Realisateur realisateur = new Realisateur();
 			Categorie categorie = new Categorie();
@@ -255,8 +257,6 @@ public class ControleurFilm extends HttpServlet {
 			film.setRealisateur(realisateur);
 			film.setCategorie(categorie);
 						
-			int idFilm = Integer.parseInt((request.getParameter("edit_id").toString()));
-			film.setNoFilm(idFilm);
 			String ressource = "/films/EditFilm/";
 			unAppel = new Appel();
 			reponse = unAppel.putJson(ressource, film);

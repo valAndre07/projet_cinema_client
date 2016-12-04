@@ -27,6 +27,7 @@
     <div class="form-group">
     <label for="exampleSelect1">Réalisateur</label>
     <select class="form-control" name="edit_realisateur">
+        <option value="${film.realisateur.noRealisateur}">${film.realisateur.prenomRealisateur} ${film.realisateur.nomRealisateur}</option>
 	    <c:forEach items="${mesRealisateurs}" var="realisateur" >
 	    	<option value="${realisateur.noRealisateur}">${realisateur.prenomRealisateur} ${realisateur.nomRealisateur}</option>
 	    </c:forEach>
@@ -36,6 +37,7 @@
   <div class="form-group">
     <label for="exampleSelect1">Catégorie</label>
     <select class="form-control" name="edit_categorie">
+        <option value="${film.categorie.codeCat}">${film.categorie.libelleCat}</option>
       <c:forEach items="${mesCategories}" var="categorie" >
 	    	<option value="${categorie.codeCat}">${categorie.libelleCat}</option>
 	    </c:forEach>

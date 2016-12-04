@@ -38,8 +38,8 @@
 				    <td>${categorie.codeCat}</td>
 				    <td>${categorie.libelleCat}</td>
                     <td style="text-align: center;">
-                        <a href="/ControleurCategorie?action=editCategorie&codeCat=${categorie.codeCat}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="/ControleurCategorie?action=deleteCategorie&codeCat=${categorie.codeCat}" data-confirm="Etes vous sûr de vouloir supprimer cette categorie ?">
+                        <a href="ControleurCategorie?action=editCategorieForm&codeCat=${categorie.codeCat}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+                        <a href="ControleurCategorie?action=deleteCategorie&codeCat=${categorie.codeCat}" data-confirm="Etes vous sûr de vouloir supprimer cette categorie ?">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
