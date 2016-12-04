@@ -180,7 +180,7 @@ public class ControleurCategorie extends HttpServlet {
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
-				unAppel.appelJson(ressource);
+				unAppel.deleteJson(ressource);
 				
 				destinationPage = "/ControleurCategorie?action=listerCategories";
 			} catch (Exception e) {

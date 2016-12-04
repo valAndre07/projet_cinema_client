@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -204,21 +205,19 @@ public class ControleurFilm extends HttpServlet {
 				reponse = unAppel.appelJson(ressource0);
 				Film film = gson.fromJson(reponse, Film.class);
 				
+				reponse = unAppel.appelJson(ressource1);
+				String recup = reponse.substring(15, reponse.length()-1);
+				TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
+				ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
 				
-					reponse = unAppel.appelJson(ressource1);
-					String recup = reponse.substring(15, reponse.length()-1);
-					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
-					ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
-					
-					reponse = unAppel.appelJson(ressource2);
-					recup = reponse.substring(13, reponse.length()-1);
-					TypeToken<ArrayList<Categorie>> token2 = new TypeToken<ArrayList<Categorie>>(){};
-					ArrayList<Categorie> categories = gson.fromJson(recup, token2.getType());
-					
-					request.setAttribute("film", film);
-					request.setAttribute("mesRealisateurs", realisateurs);
-					request.setAttribute("mesCategories", categories);
-					
+				reponse = unAppel.appelJson(ressource2);
+				recup = reponse.substring(13, reponse.length()-1);
+				TypeToken<ArrayList<Categorie>> token2 = new TypeToken<ArrayList<Categorie>>(){};
+				ArrayList<Categorie> categories = gson.fromJson(recup, token2.getType());
+				
+				request.setAttribute("film", film);
+				request.setAttribute("mesRealisateurs", realisateurs);
+				request.setAttribute("mesCategories", categories);			
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				destinationPage = "/index.jsp";
@@ -303,7 +302,7 @@ public class ControleurFilm extends HttpServlet {
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
-				unAppel.appelJson(ressource);
+				unAppel.deleteJson(ressource);
 				
 				destinationPage = "/ControleurFilm?action=listerFilms";
 			} catch (Exception e) {

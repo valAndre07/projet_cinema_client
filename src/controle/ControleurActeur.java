@@ -153,7 +153,23 @@ public class ControleurActeur extends HttpServlet {
 			destinationPage = "/ControleurActeur?action=listerActeurs";
 		}
 		if (EDIT_ACTEUR_FORM.equals(actionName)) {
-			destinationPage = "/addacteur.jsp";
+			int idActeur = Integer.parseInt((request.getParameter("noActeur").toString()));
+			String ressource1 = "acteurs/"+idActeur;
+			try {
+				
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				Acteur acteur = gson.fromJson(reponse, Acteur.class);
+				
+				request.setAttribute("acteur", acteur);
+					
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+			destinationPage = "/editacteur.jsp";
 		}
 		if (EDIT_ACTEUR.equals(actionName)) {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -171,7 +187,7 @@ public class ControleurActeur extends HttpServlet {
 			Appel unAppel = new Appel();
 			String ressource = "/acteurs/AjoutActeur/";
 			unAppel = new Appel();
-			reponse = unAppel.postJson(ressource, acteur);
+			reponse = unAppel.putJson(ressource, acteur);
 			
 			destinationPage = "/ControleurActeur?action=listerActeurs";
 		}
@@ -181,7 +197,7 @@ public class ControleurActeur extends HttpServlet {
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
-				unAppel.appelJson(ressource);
+				unAppel.deleteJson(ressource);
 				
 				destinationPage = "/ControleurActeur?action=listerActeurs";
 			} catch (Exception e) {
