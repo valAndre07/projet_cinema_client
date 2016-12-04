@@ -199,15 +199,14 @@ public class ControleurRealisateur extends HttpServlet {
 				}
 				if (EDIT_REALISATEUR.equals(actionName)) {
 					Realisateur realisateur = new Realisateur();
+					realisateur.setNoRealisateur(Integer.parseInt(request.getParameter("edit_id").toString()));
 					realisateur.setPrenomRealisateur(request.getParameter("edit_prenom").toString());
 					realisateur.setNomRealisateur(request.getParameter("edit_nom").toString());
-					System.out.println(realisateur.getNoRealisateur());
 					int idRealisateur = Integer.parseInt((request.getParameter("edit_id").toString()));
 					realisateur.setNoRealisateur(idRealisateur);
 					Appel unAppel = new Appel();
 					
-					
-					String ressource = "/realisateurs/editRealisateur/";
+					String ressource = "realisateurs/EditRealisateur/";
 					unAppel = new Appel();
 					reponse = unAppel.putJson(ressource, realisateur);
 					
