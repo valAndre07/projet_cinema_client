@@ -187,15 +187,15 @@ public class ControleurRealisateur extends HttpServlet {
 						Appel unAppel = new Appel();
 						reponse = unAppel.appelJson(ressource1);
 						Realisateur realisateur = gson.fromJson(reponse,Realisateur.class);
-						
 						request.setAttribute("realisateur", realisateur);
 						
-						destinationPage = "/editrealisateur.jsp";
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						destinationPage = "/index.jsp";
 						request.setAttribute("MesErreurs", e.getMessage());
 					}
+					destinationPage = "/editrealisateur.jsp";
 				}
 				if (EDIT_REALISATEUR.equals(actionName)) {
 					Realisateur realisateur = new Realisateur();

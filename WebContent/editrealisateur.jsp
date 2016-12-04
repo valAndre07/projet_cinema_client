@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,9 +18,9 @@
 <br>
 <form id="formRealisateur" action="ControleurRealisateur?action=editRealisateur" method="post" style="text-align:center;" onsubmit="return valider()">
   <div class="form-group">
-      <input type="hidden" class="form-control" name="edit_id" value="${ realisateur.noRea }" placeholder="id" required="true">
-    <input type="search" class="form-control" name="edit_nom" value="${ realisateur.nomRea }" placeholder="Nom" required="true">
-    <input type="search" class="form-control" name="edit_prenom" value="${ realisateur.prenRea }" placeholder="Prenom" required="true">
+    <input type="hidden" class="form-control" name="edit_id" value="${realisateur.noRealisateur}" placeholder="id" required="true">
+    <input type="search" class="form-control" name="edit_nom" value="${realisateur.nomRealisateur}" placeholder="Nom" required="true">
+    <input type="search" class="form-control" name="edit_prenom" value="${realisateur.prenomRealisateur}" placeholder="Prenom" required="true">
   </div>
   <br>
   <button type="submit" class="btn btn-primary">Modifier</button>
