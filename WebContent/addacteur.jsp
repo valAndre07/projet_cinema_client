@@ -40,7 +40,7 @@
         
         function valider() {
         	if ($('#formActeur input[name=add_nom]').val() != '' && $('#formActeur input[name=add_prenom]').val() != '' && 
-        		$('#formActeur input[name=add_date_naissance]').val() != '' && $('#formActeur input[name=add_date_deces]').val() != '')
+        		$('#formActeur input[name=add_date_naissance]').val() != '')
         	{
         		return true;
         	}

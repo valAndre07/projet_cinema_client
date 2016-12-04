@@ -141,8 +141,11 @@ public class ControleurActeur extends HttpServlet {
 			String values[]  = date_naissance.split("/");
 			acteur.setDateNaissance(formatter.parse(values[2]+"-"+values[0]+"-"+values[1]));
 			String date_deces = request.getParameter("add_date_deces");
-			String values2[]  = date_deces.split("/");
-			acteur.setDateDeces(formatter.parse(values2[2]+"-"+values2[0]+"-"+values2[1]));
+			if (date_deces!="")
+			{
+				String values2[]  = date_deces.split("/");
+				acteur.setDateDeces(formatter.parse(values2[2]+"-"+values2[0]+"-"+values2[1]));
+			}
 			
 			
 			Appel unAppel = new Appel();
