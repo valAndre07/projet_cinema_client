@@ -135,8 +135,8 @@ public class ControleurPersonnage extends HttpServlet {
 			
 			int idActeur = Integer.parseInt(request.getParameter("add_acteur").toString());
 			int idFilm = Integer.parseInt(request.getParameter("add_film").toString());
-				
-			Acteur acteur = new Acteur();
+			Gson gson = new Gson();
+			/*Acteur acteur = new Acteur();
 			Film film = new Film();
 			
 			String ressource1 = "films/"+idFilm;
@@ -148,17 +148,16 @@ public class ControleurPersonnage extends HttpServlet {
 			String ressource2 = "acteurs/"+idActeur;
 			reponse = unAppel.appelJson(ressource2);
 			acteur = gson.fromJson(reponse, Acteur.class);
-			
+			*/
 			Personnage personnage = new Personnage();
-			personnage.setActeur(acteur);
-			personnage.setFilm(film);
+			PersonnagePK pk = new PersonnagePK();
+			pk.setNoAct(idActeur);
+			pk.setNoFilm(idFilm);
+			personnage.setId(pk);
 			personnage.setNomPersonnage(request.getParameter("link_personnage").toString());
 			
-			System.out.println(personnage.getNomPersonnage());
-			System.out.println(personnage.getActeur().getNomActeur());
-			System.out.println(personnage.getFilm().getTitre());
 			String ressource = "/personnages/AjoutPersonnage/";
-			unAppel = new Appel();
+			Appel unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, personnage);			
 			destinationPage = "/ControleurActeur?action=listerActeurs";
 		}

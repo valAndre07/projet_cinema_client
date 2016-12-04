@@ -14,13 +14,13 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">${realisateur.nomRealisateur} ${realisateur.prenomRealisateur} a réalisé les films suivants :</h1>
+<h1 style="color:white; text-align:center;">Liste des films réalisés par ${realisateur.nomRealisateur} ${realisateur.prenomRealisateur} :</h1>
 <br>
 <div class="container">
 	<div class="row">
 	    <div class="col-xs-12 col-sm-12 col-md-12">
 	    	<c:forEach var="film" items="${filmsRealisateur}">
-	                <h2 style="text-align:center;">- ${film.titre}</h2>
+	                <h2 style="text-align:center;">- ${film.titre} (${film.categorie.libelleCat})</h2>
 	       </c:forEach>
 		</div>
 	</div>

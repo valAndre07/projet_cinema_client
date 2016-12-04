@@ -14,22 +14,22 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">${film.titre}</h1>
+<h1 style="color:white; background-color:#f9b701; text-align:center;">${film.titre}</h1>
 <br>
-	<div class="row">
+	<div class="row" style="background-color:#2d6e84;">
 	    <div class="span6">
-	    	<h2>Informations générales</h2><br>
-	    	<p>Durée : ${film.duree} minutes</p>
-	    	<p>Date de sortie : ${film.dateSortie}</p>
-	    	<p>Budget : ${film.budget}</p>
-	    	<p>Recette : ${film.montantRecette} €</p>
-	    	<p>Réalisateur : ${film.realisateur.nomRealisateur} ${film.realisateur.prenomRealisateur}</p>
-	    	<p>Catégorie : ${film.categorie.libelleCat}</p>
+	    	<h2 style="text-align:center;">Informations générales</h2><br>
+	    	<p style="text-align:center;">Durée : ${film.duree} minutes</p>
+	    	<p style="text-align:center;">Date de sortie : ${film.dateSortie}</p>
+	    	<p style="text-align:center;">Budget : ${film.budget}</p>
+	    	<p style="text-align:center;">Recette : ${film.montantRecette} €</p>
+	    	<p style="text-align:center;">Réalisateur : ${film.realisateur.nomRealisateur} ${film.realisateur.prenomRealisateur}</p>
+	    	<p style="text-align:center;">Catégorie : ${film.categorie.libelleCat}</p>
 		</div>
 		<div class="span6">
-			<h2>Acteurs - Personnages</h2><br>
+			<h2 style="text-align:center;">Acteurs - Personnages</h2><br>
 			<c:forEach var="personnage" items="${mesPersonnages}"  >
-			    <p>${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}</p>
+			    <p style="text-align:center;">${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}</p>
            	</c:forEach>
 		</div>
 	</div>
