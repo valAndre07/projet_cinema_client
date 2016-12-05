@@ -110,16 +110,30 @@ public class ControleurPersonnage extends HttpServlet {
 				Gson gson = new Gson();
 				try
 				{
-					TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
-					ArrayList<Film> films = gson.fromJson(recup, token.getType());
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
+						ArrayList<Film> films = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesFilms", films);
+					} else {
+						Film film = gson.fromJson(recup, Film.class);
+						ArrayList<Film> films = new ArrayList<Film>();
+						films.add(film);
+						request.setAttribute("mesFilms", films);
+					}
 					
-					request.setAttribute("mesFilms", films);
 					
 					reponse = unAppel.appelJson(ressource2);
 					recup = reponse.substring(10, reponse.length()-1);
-					TypeToken<ArrayList<Acteur>> token2 = new TypeToken<ArrayList<Acteur>>(){};
-					ArrayList<Acteur> acteurs = gson.fromJson(recup, token2.getType());
-					request.setAttribute("mesActeurs", acteurs);
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Acteur>> token = new TypeToken<ArrayList<Acteur>>(){};
+						ArrayList<Acteur> acteurs = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesActeurs", acteurs);
+					} else {
+						Acteur acteur = gson.fromJson(recup, Acteur.class);
+						ArrayList<Acteur> acteurs = new ArrayList<Acteur>();
+						acteurs.add(acteur);
+						request.setAttribute("mesActeurs", acteurs);
+					}
 				}
 				catch(Exception e){
 					System.out.println(e);
@@ -137,19 +151,6 @@ public class ControleurPersonnage extends HttpServlet {
 			int idActeur = Integer.parseInt(request.getParameter("add_acteur").toString());
 			int idFilm = Integer.parseInt(request.getParameter("add_film").toString());
 			Gson gson = new Gson();
-			/*Acteur acteur = new Acteur();
-			Film film = new Film();
-			
-			String ressource1 = "films/"+idFilm;
-			Gson gson = new Gson();
-			Appel unAppel = new Appel();
-			reponse = unAppel.appelJson(ressource1);
-			film = gson.fromJson(reponse, Film.class);
-			
-			String ressource2 = "acteurs/"+idActeur;
-			reponse = unAppel.appelJson(ressource2);
-			acteur = gson.fromJson(reponse, Acteur.class);
-			*/
 			Personnage personnage = new Personnage();
 			PersonnagePK pk = new PersonnagePK();
 			pk.setNoAct(idActeur);

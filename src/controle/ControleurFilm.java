@@ -113,10 +113,16 @@ public class ControleurFilm extends HttpServlet {
 				Gson gson = new Gson();
 				try
 				{
-					TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
-					ArrayList<Film> films = gson.fromJson(recup, token.getType());
-					
-					request.setAttribute("mesFilms", films);
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
+						ArrayList<Film> films = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesFilms", films);
+					} else {
+						Film film = gson.fromJson(recup, Film.class);
+						ArrayList<Film> films = new ArrayList<Film>();
+						films.add(film);
+						request.setAttribute("mesFilms", films);
+					}
 				}
 				catch(Exception e){
 					System.out.println(e);
@@ -138,16 +144,28 @@ public class ControleurFilm extends HttpServlet {
 					reponse = unAppel.appelJson(ressource1);
 					Gson gson = new Gson();
 					String recup = reponse.substring(15, reponse.length()-1);
-					TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
-					ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
-					
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Realisateur>> token = new TypeToken<ArrayList<Realisateur>>(){};
+						ArrayList<Realisateur> realisateurs = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesRealisateurs", realisateurs);
+					} else {
+						Realisateur realisateur = gson.fromJson(recup, Realisateur.class);
+						ArrayList<Realisateur> realisateurs = new ArrayList<Realisateur>();
+						realisateurs.add(realisateur);
+						request.setAttribute("mesRealisateurs", realisateurs);
+					}
 					reponse = unAppel.appelJson(ressource2);
 					recup = reponse.substring(13, reponse.length()-1);
-					TypeToken<ArrayList<Categorie>> token2 = new TypeToken<ArrayList<Categorie>>(){};
-					ArrayList<Categorie> categories = gson.fromJson(recup, token2.getType());
-					
-					request.setAttribute("mesRealisateurs", realisateurs);
-					request.setAttribute("mesCategories", categories);
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
+						ArrayList<Categorie> categories = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesCategories", categories);
+					} else {
+						Categorie categorie = gson.fromJson(recup, Categorie.class);
+						ArrayList<Categorie> categories = new ArrayList<Categorie>();
+						categories.add(categorie);
+						request.setAttribute("mesCategories", categories);
+					}
 					
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -274,11 +292,18 @@ public class ControleurFilm extends HttpServlet {
 				
 				reponse = unAppel.appelJson(ressource2);
 				String recup = reponse.substring(14, reponse.length()-1);
-				TypeToken<ArrayList<Personnage>> token = new TypeToken<ArrayList<Personnage>>(){};
-				ArrayList<Personnage> personnages = gson.fromJson(recup, token.getType());
 				try
 				{
-					request.setAttribute("mesPersonnages", personnages);
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Personnage>> token = new TypeToken<ArrayList<Personnage>>(){};
+						ArrayList<Personnage> personnages = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesPersonnages", personnages);
+					} else {
+						Personnage personnage = gson.fromJson(recup, Personnage.class);
+						ArrayList<Personnage> personnages = new ArrayList<Personnage>();
+						personnages.add(personnage);
+						request.setAttribute("mesPersonnages", personnages);
+					}
 				}
 				catch(Exception e){
 					System.out.println(e);

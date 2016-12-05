@@ -111,11 +111,18 @@ public class ControleurCategorie extends HttpServlet {
 				reponse = unAppel.appelJson(ressource);
 				Gson gson = new Gson();
 				String recup = reponse.substring(13, reponse.length()-1);
-				TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
-				ArrayList<Categorie> categories = gson.fromJson(recup, token.getType());
 				try
 				{
-					request.setAttribute("mesCategories", categories);
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
+						ArrayList<Categorie> categories = gson.fromJson(recup, token.getType());
+						request.setAttribute("mesCategories", categories);
+					} else {
+						Categorie categorie = gson.fromJson(recup, Categorie.class);
+						ArrayList<Categorie> categories = new ArrayList<Categorie>();
+						categories.add(categorie);
+						request.setAttribute("mesCategories", categories);
+					}
 				}
 				catch(Exception e){
 					System.out.println(e);
