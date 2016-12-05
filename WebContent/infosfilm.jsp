@@ -29,9 +29,9 @@
 		<div class="span6">
 			<h2 style="text-align:center;">Acteurs - Personnages</h2><br>
 			<c:forEach var="personnage" items="${mesPersonnages}"  >
-			    <p style="text-align:center;">${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}
-			    <a href="ControleurPersonnage?action="><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                <a href="ControleurPersonnage?action=deletePersonnage&idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-trash"></span></a></p>
+			    <p style="text-align:center;">${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}&nbsp;&nbsp;&nbsp;&nbsp;
+			    <a href="ControleurPersonnage?action="><span class="glyphicon glyphicon-pencil" style="color:white;"></span></a>&nbsp;&nbsp;
+                <a href="ControleurPersonnage?action=deletePersonnage&idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-trash" style="color:white;"></span></a></p>
 			    
            	</c:forEach>
 		</div>
