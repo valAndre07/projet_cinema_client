@@ -37,7 +37,7 @@
             <tbody>
 				<c:forEach var="acteur" items="${mesActeurs}"  >
 	                <tr>
-					    <td>${acteur.nomActeur}</td>
+					    <td><a href="ControleurActeur?action=infosActeur&noActeur=${acteur.noActeur}">${acteur.nomActeur}</a></td>
 					    <td>${acteur.prenomActeur}</td>
 					    <td>${acteur.dateNaissance}</td>
 					    <td>${acteur.dateDeces}</td>

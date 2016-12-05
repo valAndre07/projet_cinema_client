@@ -52,6 +52,7 @@ public class ControleurActeur extends HttpServlet {
 	private static final String ADD_ACTEUR = "addActeur";
 	private static final String EDIT_ACTEUR_FORM = "editActeurForm";
 	private static final String EDIT_ACTEUR = "editActeur";
+	private static final String INFOS_ACTEUR = "infosActeur";
 	private static final String DELETE_ACTEUR = "deleteActeur";
 
 	/**
@@ -194,6 +195,38 @@ public class ControleurActeur extends HttpServlet {
 			reponse = unAppel.putJson(ressource, acteur);
 			
 			destinationPage = "/ControleurActeur?action=listerActeurs";
+		}
+		if (INFOS_ACTEUR.equals(actionName)) {
+			int noActeur = Integer.parseInt((request.getParameter("noActeur").toString()));
+			String ressource1 = "acteurs/"+noActeur;
+			String ressource2 = "acteurs/"+noActeur+"/personnages";
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				Acteur acteur = gson.fromJson(reponse, Acteur.class);
+				
+				request.setAttribute("categorie", acteur);
+				
+				reponse = unAppel.appelJson(ressource2);
+				String recup = reponse.substring(14, reponse.length()-1);
+				if (recup.substring(0, 1).equals("[")) {
+					TypeToken<ArrayList<Personnage>> token = new TypeToken<ArrayList<Personnage>>(){};
+					ArrayList<Personnage> personnages = gson.fromJson(recup, token.getType());
+					request.setAttribute("personnages", personnages);
+				} else {
+					Personnage personnage = gson.fromJson(recup, Personnage.class);
+					ArrayList<Personnage> personnages = new ArrayList<Personnage>();
+					personnages.add(personnage);
+					request.setAttribute("personnages", personnages);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
+			
+			destinationPage = "/infosacteurs.jsp";
 		}
 		if (DELETE_ACTEUR.equals(actionName)) {
 			int noActeur = Integer.parseInt((request.getParameter("noActeur").toString()));

@@ -52,6 +52,7 @@ public class ControleurCategorie extends HttpServlet {
 	private static final String ADD_CATEGORIE = "addCategorie";
 	private static final String EDIT_CATEGORIE_FORM = "editCategorieForm";
 	private static final String EDIT_CATEGORIE = "editCategorie";
+	private static final String INFOS_CATEGORIE = "infosCategorie";
 	private static final String DELETE_CATEGORIE = "deleteCategorie";
 
 	/**
@@ -172,6 +173,39 @@ public class ControleurCategorie extends HttpServlet {
 			reponse = unAppel.putJson(ressource, categorie);
 						
 			destinationPage = "/ControleurCategorie?action=listerCategories";
+		}
+		if (INFOS_CATEGORIE.equals(actionName)) {
+			String codeCat = request.getParameter("codeCat").toString();
+			String ressource1 = "categories/"+codeCat;
+			String ressource2 = "categories/"+codeCat+"/films";
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource1);
+				Categorie categorie = gson.fromJson(reponse, Categorie.class);
+				
+				request.setAttribute("categorie", categorie);
+				
+				reponse = unAppel.appelJson(ressource2);
+				System.out.println(reponse);
+				String recup = reponse.substring(14, reponse.length()-1);
+				TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
+				ArrayList<Film> films = gson.fromJson(recup, token.getType());
+				try
+				{
+					request.setAttribute("films", films);
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
+				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					destinationPage = "/index.jsp";
+					request.setAttribute("MesErreurs", e.getMessage());
+				}
+			
+			destinationPage = "/infoscategorie.jsp";
 		}
 		if (DELETE_CATEGORIE.equals(actionName)) {
 			String codeCat = (request.getParameter("codeCat").toString());

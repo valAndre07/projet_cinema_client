@@ -35,7 +35,7 @@
             <tbody>
 				<c:forEach items="${mesCategories}" var="categorie" >
                 <tr>
-				    <td>${categorie.codeCat}</td>
+				    <td><a href="ControleurCategorie?action=infosCategorie&codeCat=${categorie.codeCat}">${categorie.codeCat}</a></td>
 				    <td>${categorie.libelleCat}</td>
                     <td style="text-align: center;">
                         <a href="ControleurCategorie?action=editCategorieForm&codeCat=${categorie.codeCat}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;

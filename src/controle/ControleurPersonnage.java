@@ -49,6 +49,7 @@ public class ControleurPersonnage extends HttpServlet {
 	private static final String INDEX = "index";
 	private static final String LINK_PERSONNAGE_FORM = "linkPersonnageForm";
 	private static final String LINK_PERSONNAGE = "linkPersonnage";
+	private static final String DELETE_PERSONNAGE = "deletePersonnage";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -160,6 +161,24 @@ public class ControleurPersonnage extends HttpServlet {
 			Appel unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, personnage);			
 			destinationPage = "/ControleurActeur?action=listerActeurs";
+		}
+		if (DELETE_PERSONNAGE.equals(actionName)) {
+			String idFilm = request.getParameter("idFilm").toString();
+			String idActeur = request.getParameter("idActeur").toString();
+			String ressource = "personnages/{\"noFilm\":"+idFilm+",\"noAct\":"+idActeur+"}";
+					
+					
+			try {
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				unAppel.deleteJson(ressource);
+				
+				destinationPage = "/ControleurFilm?action=infosFilm&idFilm="+idFilm;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				destinationPage = "/index.jsp";
+				request.setAttribute("MesErreurs", e.getMessage());
+			}
 		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";

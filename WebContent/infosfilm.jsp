@@ -31,7 +31,7 @@
 			<c:forEach var="personnage" items="${mesPersonnages}"  >
 			    <p style="text-align:center;">${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}
 			    <a href="ControleurPersonnage?action="><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                <a onclick="Supprimer();"><span class="glyphicon glyphicon-trash"></span></a></p>
+                <a href="ControleurPersonnage?action=deletePersonnage&idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-trash"></span></a></p>
 			    
            	</c:forEach>
 		</div>
