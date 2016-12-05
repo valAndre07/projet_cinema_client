@@ -298,7 +298,7 @@ public class ControleurFilm extends HttpServlet {
 		}
 		if (DELETE_FILM.equals(actionName)) {
 			int idFilm = Integer.parseInt((request.getParameter("idFilm").toString()));
-			String ressource = "films/deleteFilm/"+idFilm;
+			String ressource = "films/"+idFilm;
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();

@@ -177,6 +177,7 @@ public class ControleurActeur extends HttpServlet {
 		if (EDIT_ACTEUR.equals(actionName)) {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Acteur acteur = new Acteur();
+			acteur.setNoActeur(Integer.parseInt(request.getParameter("edit_id").toString()));
 			acteur.setNomActeur(request.getParameter("edit_nom").toString());
 			acteur.setPrenomActeur(request.getParameter("edit_prenom").toString());
 			String date_naissance = request.getParameter("edit_date_naissance");
@@ -198,7 +199,7 @@ public class ControleurActeur extends HttpServlet {
 		}
 		if (DELETE_ACTEUR.equals(actionName)) {
 			int noActeur = Integer.parseInt((request.getParameter("noActeur").toString()));
-			String ressource = "acteurs/deleteActeur/"+noActeur;
+			String ressource = "acteurs/"+noActeur;
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();

@@ -214,7 +214,7 @@ public class ControleurRealisateur extends HttpServlet {
 				}
 				if (DELETE_REALISATEUR.equals(actionName)) {
 					int idRealisateur = Integer.parseInt((request.getParameter("idRealisateur").toString()));
-					String ressource = "realisateurs/deleteRealisateur/"+idRealisateur;
+					String ressource = "realisateurs/"+idRealisateur;
 					try {
 						Gson gson = new Gson();
 						Appel unAppel = new Appel();

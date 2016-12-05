@@ -176,7 +176,7 @@ public class ControleurCategorie extends HttpServlet {
 		}
 		if (DELETE_CATEGORIE.equals(actionName)) {
 			String codeCat = (request.getParameter("codeCat").toString());
-			String ressource = "categories/deleteCategorie/"+codeCat;
+			String ressource = "categories/"+codeCat;
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
