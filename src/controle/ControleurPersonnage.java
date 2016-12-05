@@ -121,7 +121,6 @@ public class ControleurPersonnage extends HttpServlet {
 						request.setAttribute("mesFilms", films);
 					}
 					
-					
 					reponse = unAppel.appelJson(ressource2);
 					recup = reponse.substring(10, reponse.length()-1);
 					if (recup.substring(0, 1).equals("[")) {

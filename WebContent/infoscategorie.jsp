@@ -14,13 +14,12 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; background-color:#f9b701; text-align:center;">${categorie.libelleCat}</h1>
+<h1 style="color:white; background-color:#f9b701; text-align:center;">Films de la catégorie ${categorie.libelleCat}</h1>
 <br>
 	<div class="row" style="background-color:#2d6e84;">
-		<div class="span6">
-			<h2 style="text-align:center;">Films</h2><br>
-			<c:forEach var="film" items="${films}"  >
-			    <p style="text-align:center;">${film.titre}</p>
+		<div class="span12">
+			<c:forEach var="film" items="${filmsCat}"  >
+			    <h2 style="text-align:center;">- ${film.titre}</h2>
            	</c:forEach>
 		</div>
 	</div>

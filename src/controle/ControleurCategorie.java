@@ -196,11 +196,18 @@ public class ControleurCategorie extends HttpServlet {
 				reponse = unAppel.appelJson(ressource2);
 				System.out.println(reponse);
 				String recup = reponse.substring(8, reponse.length()-1);
-				TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
-				ArrayList<Film> films = gson.fromJson(recup, token.getType());
 				try
 				{
-					request.setAttribute("films", films);
+					if (recup.substring(0, 1).equals("[")) {
+						TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
+						ArrayList<Film> films = gson.fromJson(recup, token.getType());
+						request.setAttribute("filmsCat", films);
+					} else {
+						Film film = gson.fromJson(recup, Film.class);
+						ArrayList<Film> films = new ArrayList<Film>();
+						films.add(film);
+						request.setAttribute("filmsCat", films);
+					}
 				}
 				catch(Exception e){
 					System.out.println(e);
