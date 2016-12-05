@@ -49,6 +49,8 @@ public class ControleurPersonnage extends HttpServlet {
 	private static final String INDEX = "index";
 	private static final String LINK_PERSONNAGE_FORM = "linkPersonnageForm";
 	private static final String LINK_PERSONNAGE = "linkPersonnage";
+	private static final String EDIT_PERSONNAGE_FORM = "editPersonnageForm";
+	private static final String EDIT_PERSONNAGE = "editPersonnage";
 	private static final String DELETE_PERSONNAGE = "deletePersonnage";
 
 	/**
@@ -162,11 +164,19 @@ public class ControleurPersonnage extends HttpServlet {
 			reponse = unAppel.postJson(ressource, personnage);			
 			destinationPage = "/ControleurActeur?action=listerActeurs";
 		}
+		if (EDIT_PERSONNAGE_FORM.equals(actionName)) {
+			int idFilm = Integer.parseInt(request.getParameter("idFilm").toString());
+			int idActeur = Integer.parseInt(request.getParameter("idActeur").toString());
+			
+			System.out.println(idFilm);
+			System.out.println(idActeur);
+			destinationPage = "/editpersonnage.jsp";
+		}
 		if (DELETE_PERSONNAGE.equals(actionName)) {
-			String idFilm = request.getParameter("idFilm").toString();
-			String idActeur = request.getParameter("idActeur").toString();
-			String ressource = "personnages/{\"noFilm\":"+idFilm+",\"noAct\":"+idActeur+"}";	
-					
+			int idFilm = Integer.parseInt(request.getParameter("idFilm").toString());
+			int idActeur = Integer.parseInt(request.getParameter("idActeur").toString());
+			String ressource = "/personnages/{\"noFilm\":"+idFilm+",\"noAct\":"+idActeur+"}";	
+			System.out.println(ressource);
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();

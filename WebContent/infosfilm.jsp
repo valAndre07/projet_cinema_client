@@ -30,12 +30,21 @@
 			<h2 style="text-align:center;">Acteurs - Personnages</h2><br>
 			<c:forEach var="personnage" items="${mesPersonnages}"  >
 			    <p style="text-align:center;">${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}&nbsp;&nbsp;&nbsp;&nbsp;
-			    <a href="ControleurPersonnage?action="><span class="glyphicon glyphicon-pencil" style="color:white;"></span></a>&nbsp;&nbsp;
-                <a href="ControleurPersonnage?action=deletePersonnage&idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-trash" style="color:white;"></span></a></p>
+			    <a href="ControleurPersonnage?action=editPersonnageForm?idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-pencil" style="color:white;"></span></a>&nbsp;&nbsp;
+                <a onclick="Supprimer('${personnage.acteur.noActeur}','${personnage.film.noFilm}');"><span class="glyphicon glyphicon-trash" style="color:white;"></span></a></p>
 			    
            	</c:forEach>
 		</div>
 	</div>
+
+<script>
+function Supprimer(noActeur, noFilm) {
+    var r = confirm("Voulez vous supprimer cet acteur ?");
+    if (r == true) {
+    	location.href = "ControleurPersonnage?action=deletePersonnage&idActeur="+noActeur+"&idFilm="+noFilm;
+    }
+}
+</script>
 
 </body>
 </html>
