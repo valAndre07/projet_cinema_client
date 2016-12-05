@@ -117,7 +117,6 @@ public class ControleurFilm extends HttpServlet {
 					ArrayList<Film> films = gson.fromJson(recup, token.getType());
 					
 					request.setAttribute("mesFilms", films);
-					System.out.println(films.get(0).getTitre());
 				}
 				catch(Exception e){
 					System.out.println(e);
@@ -189,7 +188,6 @@ public class ControleurFilm extends HttpServlet {
 			String ressource = "/films/AjoutFilm/";
 			unAppel = new Appel();
 			reponse = unAppel.postJson(ressource, film);
-			System.out.println(reponse);			
 			
 			destinationPage = "/ControleurFilm?action=listerFilms";
 		}
@@ -259,7 +257,6 @@ public class ControleurFilm extends HttpServlet {
 			String ressource = "/films/EditFilm/";
 			unAppel = new Appel();
 			reponse = unAppel.putJson(ressource, film);
-			System.out.println(reponse);			
 			
 			destinationPage = "/ControleurFilm?action=listerFilms";
 		}
@@ -277,7 +274,6 @@ public class ControleurFilm extends HttpServlet {
 				
 				reponse = unAppel.appelJson(ressource2);
 				String recup = reponse.substring(14, reponse.length()-1);
-				System.out.println(recup);
 				TypeToken<ArrayList<Personnage>> token = new TypeToken<ArrayList<Personnage>>(){};
 				ArrayList<Personnage> personnages = gson.fromJson(recup, token.getType());
 				try

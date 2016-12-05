@@ -110,7 +110,6 @@ public class ControleurCategorie extends HttpServlet {
 				reponse = unAppel.appelJson(ressource);
 				Gson gson = new Gson();
 				String recup = reponse.substring(13, reponse.length()-1);
-				System.out.println(recup);
 				TypeToken<ArrayList<Categorie>> token = new TypeToken<ArrayList<Categorie>>(){};
 				ArrayList<Categorie> categories = gson.fromJson(recup, token.getType());
 				try

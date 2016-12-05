@@ -28,7 +28,7 @@
             <thead>
             <tr>
 			     <th>Code</th>
-			     <th>Libelle</th>
+			     <th>Libellé</th>
 			     <th>Actions</th>
             </tr>
             </thead>
@@ -39,7 +39,7 @@
 				    <td>${categorie.libelleCat}</td>
                     <td style="text-align: center;">
                         <a href="ControleurCategorie?action=editCategorieForm&codeCat=${categorie.codeCat}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="ControleurCategorie?action=deleteCategorie&codeCat=${categorie.codeCat}" data-confirm="Etes vous sûr de vouloir supprimer cette categorie ?">
+                        <a id="supprCat" onclick="Supprimer('${categorie.codeCat}');">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -74,6 +74,14 @@
             }
         } );
     });
+    
+    function Supprimer(codeCat) {
+        var r = confirm("Voulez vous supprimer cette catégorie ? Vous devez avoir auparavant supprimé tous les films appartenant à cette catégorie");
+        if (r == true) {
+        	location.href = "ControleurCategorie?action=deleteCategorie&codeCat="+codeCat;
+        	//document.getElementById("supprCat").href = "ControleurCategorie?action=deleteCategorie&codeCat="+codeCat;
+        }
+    }
 </script>
 
  

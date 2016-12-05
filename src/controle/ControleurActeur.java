@@ -110,10 +110,8 @@ public class ControleurActeur extends HttpServlet {
 				reponse = unAppel.appelJson(ressource);
 				Gson gson = new Gson();
 				String recup = reponse.substring(10, reponse.length()-1);
-				System.out.println(recup);
 				TypeToken<ArrayList<Acteur>> token = new TypeToken<ArrayList<Acteur>>(){};
 				ArrayList<Acteur> acteurs = gson.fromJson(recup, token.getType());
-				System.out.println(acteurs.get(0).getPrenomActeur());
 				try
 				{
 					request.setAttribute("mesActeurs", acteurs);

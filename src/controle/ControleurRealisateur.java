@@ -135,7 +135,6 @@ public class ControleurRealisateur extends HttpServlet {
 					Realisateur realisateur = new Realisateur();
 					realisateur.setPrenomRealisateur(request.getParameter("add_prenom").toString());
 					realisateur.setNomRealisateur(request.getParameter("add_nom").toString());
-					System.out.println(realisateur.getNoRealisateur());
 					Appel unAppel = new Appel();
 					
 					String ressource = "/realisateurs/AjoutRealisateur/";
@@ -164,7 +163,6 @@ public class ControleurRealisateur extends HttpServlet {
 							ArrayList<Film> films = gson.fromJson(recup, token.getType());
 							
 							request.setAttribute("filmsRealisateur", films);
-							System.out.println(films.get(0).getTitre());
 						}
 						catch(Exception e){
 							System.out.println(e);
