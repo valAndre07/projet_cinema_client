@@ -188,7 +188,7 @@ public class ControleurCategorie extends HttpServlet {
 				
 				reponse = unAppel.appelJson(ressource2);
 				System.out.println(reponse);
-				String recup = reponse.substring(14, reponse.length()-1);
+				String recup = reponse.substring(8, reponse.length()-1);
 				TypeToken<ArrayList<Film>> token = new TypeToken<ArrayList<Film>>(){};
 				ArrayList<Film> films = gson.fromJson(recup, token.getType());
 				try
