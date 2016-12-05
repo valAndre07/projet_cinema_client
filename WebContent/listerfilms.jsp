@@ -48,7 +48,7 @@
 	                    <td>${film.categorie.libelleCat}</td>
 	                    <td style="text-align: center;">
 	                        <a href="ControleurFilm?action=editFilmForm&idFilm=${film.noFilm}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-	                        <a href="ControleurFilm?action=deleteFilm&idFilm=${film.noFilm}"><span class="glyphicon glyphicon-trash"></span></a>
+	                        <a onclick="Supprimer('${film.noFilm}');"><span class="glyphicon glyphicon-trash"></span></a>
 	                    </td>
 	                </tr>
 	            </c:forEach>
@@ -83,6 +83,13 @@
     	        }
     	);
     });
+    
+    function Supprimer(idFilm) {
+        var r = confirm("Voulez vous supprimer ce film ?");
+        if (r == true) {
+        	location.href = "ControleurFilm?action=deleteFilm&idFilm="+idFilm;
+        }
+    }
 </script>
 </body>
 </html>

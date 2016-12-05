@@ -39,8 +39,7 @@
 				    <td>${realisateur.prenomRealisateur}</td>
                     <td style="text-align: center;">
                         <a href="ControleurRealisateur?action=editRealisateurForm&idRealisateur=${realisateur.noRealisateur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="ControleurRealisateur?action=deleteRealisateur&idRealisateur=${realisateur.noRealisateur}" data-confirm="Etes vous sûr de vouloir supprimer ce réalisateur ? ">
-                            <span class="glyphicon glyphicon-trash"></span>
+                        <a onclick="Supprimer('${realisateur.noRealisateur}');"><span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
                 </tr>
@@ -74,6 +73,13 @@
             }
         } );
     });
+    
+    function Supprimer(idRea) {
+        var r = confirm("Voulez vous supprimer ce réalisateur ?");
+        if (r == true) {
+        	location.href = "ControleurRealisateur?action=deleteRealisateur&idRealisateur="+idRea;
+        }
+    }
 </script>
 
  

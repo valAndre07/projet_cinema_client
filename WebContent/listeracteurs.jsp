@@ -43,7 +43,7 @@
 					    <td>${acteur.dateDeces}</td>
 	                    <td style="text-align: center;">
 	                        <a href="ControleurActeur?action=editActeurForm&noActeur=${acteur.noActeur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-	                        <a href="ControleurActeur?action=deleteActeur&noActeur=${acteur.noActeur}" data-confirm="Etes vous sûr de vouloir supprimer cet acteur ?">
+	                        <a onclick="Supprimer('${acteur.noActeur}');">
 	                            <span class="glyphicon glyphicon-trash"></span>
 	                        </a>
 	                    </td>
@@ -78,6 +78,13 @@
             }
         } );
     });
+    
+    function Supprimer(codeCat) {
+        var r = confirm("Voulez vous supprimer cet acteur ?");
+        if (r == true) {
+        	location.href = "ControleurActeur?action=deleteActeur&noActeur="+codeCat;
+        }
+    }
 </script>
 
  
