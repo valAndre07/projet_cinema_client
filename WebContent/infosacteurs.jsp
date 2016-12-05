@@ -17,7 +17,7 @@
 <h1 style="color:white; background-color:#f9b701; text-align:center;">${acteur.prenom} ${acteur.nom}</h1>
 <br>
 	<div class="row" style="background-color:#2d6e84;">
-		<div class="span6">
+		<div class="span12">
 			<h2 style="text-align:center;">Personnage</h2><br>
 			<c:forEach var="personnage" items="${personnages}"  >
 			    <p style="text-align:center;">${personnage.nomPersonnage} dans ${personnage.film.titre}</p>
