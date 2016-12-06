@@ -45,7 +45,7 @@ function convertDate(id) {
 					month = "12";
 					break;
 			}
-	    	var newDate = year+"-"+month+"-"+day;
+	    	var newDate = day+"/"+month+"/"+year;
 	    	$(this).text(newDate);
 	
 		});
@@ -99,7 +99,7 @@ function convertDateInput(id) {
 				month = "12";
 				break;
 		}
-    	var newDate = year+"-"+month+"-"+day;
+    	var newDate = month+"/"+day+"/"+year;
     	$(id).val(newDate);
 
 	}
