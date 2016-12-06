@@ -97,10 +97,11 @@ public class Appel {
 		
 		WebTarget target = Consommateur.get().target;
 		target = target.path(action);
+		
 		System.out.println(" uri :"  + target.getUri());
 		Response response = target.request(MediaType.APPLICATION_JSON)
 	               .delete();
-	             
+		System.out.println(response.getStatus());
 		 if(response.getStatus() >= 200 && response.getStatus() <= 299) {
 			 return "Mise à jour effectuée";
 		 }

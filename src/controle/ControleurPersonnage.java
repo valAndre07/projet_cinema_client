@@ -175,8 +175,8 @@ public class ControleurPersonnage extends HttpServlet {
 		if (DELETE_PERSONNAGE.equals(actionName)) {
 			int idFilm = Integer.parseInt(request.getParameter("idFilm").toString());
 			int idActeur = Integer.parseInt(request.getParameter("idActeur").toString());
-			String ressource = "/personnages/{\"noFilm\":"+idFilm+",\"noAct\":"+idActeur+"}";	
-			System.out.println(ressource);
+
+			String ressource = "/personnages/"+idFilm+"-"+idActeur;	
 			try {
 				Gson gson = new Gson();
 				Appel unAppel = new Appel();
