@@ -56,6 +56,7 @@
         	$('#datetimepicker').datepicker({
                 startView: 2
             });
+        	convertDate("datetimepicker");
         });
         
         function valider() {

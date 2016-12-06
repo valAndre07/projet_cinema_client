@@ -36,11 +36,11 @@
             </thead>
             <tbody>
 				<c:forEach var="acteur" items="${mesActeurs}"  >
-	                <tr>
+	                <tr style="text-align:center;">
 					    <td><a href="ControleurActeur?action=infosActeur&noActeur=${acteur.noActeur}">${acteur.nomActeur}</a></td>
 					    <td>${acteur.prenomActeur}</td>
-					    <td>${acteur.dateNaissance}</td>
-					    <td>${acteur.dateDeces}</td>
+					    <td id="datenaissance_${acteur.noActeur}">${acteur.dateNaissance}</td>
+					    <td id="datedeces_${acteur.noActeur}">${acteur.dateDeces}</td>
 	                    <td style="text-align: center;">
 	                        <a href="ControleurActeur?action=editActeurForm&noActeur=${acteur.noActeur}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
 	                        <a onclick="Supprimer('${acteur.noActeur}');">
@@ -77,6 +77,8 @@
                 }
             }
         } );
+        convertDate("datenaissance_");
+        convertDate("datedeces_");
     });
     
     function Supprimer(codeCat) {

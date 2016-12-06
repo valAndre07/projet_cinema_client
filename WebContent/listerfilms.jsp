@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,7 +13,6 @@
 <jsp:include page="header.jsp"/>
 
 <br><br><br><br>
-
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
 		<a href="ControleurFilm?action=addFilmForm"><button type="submit" class="btn btn-primary btn-large">Ajouter un film</button></a>
@@ -38,10 +36,10 @@
             </thead>
             <tbody>
 				<c:forEach var="film" items="${mesFilms}"  >
-	                <tr>
+	                <tr style="text-align:center;">
 	                    <td><a href="ControleurFilm?action=infosFilm&idFilm=${film.noFilm}">${film.titre}</a></td>
 	                    <td>${film.duree} min</td>
-	                    <td>${film.dateSortie}</td>
+	                    <td id="date_${film.noFilm}">${film.dateSortie}</td>
 	                    <td>${film.budget} €</td>
 	                    <td>${film.montantRecette} €</td>
 	                    <td>${film.realisateur.nomRealisateur}</td>
@@ -82,6 +80,7 @@
     	            }
     	        }
     	);
+    	convertDate("date_");
     });
     
     function Supprimer(idFilm) {
@@ -90,6 +89,7 @@
         	location.href = "ControleurFilm?action=deleteFilm&idFilm="+idFilm;
         }
     }
+    
 </script>
 </body>
 </html>

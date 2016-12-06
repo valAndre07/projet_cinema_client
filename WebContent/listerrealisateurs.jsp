@@ -34,7 +34,7 @@
             </thead>
             <tbody>
 				<c:forEach items="${mesRealisateurs}" var="realisateur" >
-                <tr>
+                <tr style="text-align:center;">
 				    <td><a href="ControleurRealisateur?action=infosRealisateur&idRealisateur=${realisateur.noRealisateur}">${realisateur.nomRealisateur}</a></td>
 				    <td>${realisateur.prenomRealisateur}</td>
                     <td style="text-align: center;">

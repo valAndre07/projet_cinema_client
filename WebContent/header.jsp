@@ -60,6 +60,7 @@
 <script src="js/AnimOnScroll.js"></script>
 <script type="text/javascript" src="js/datatables.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/convertDate.js"></script>
     
 </body>
 </html>
