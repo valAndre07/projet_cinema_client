@@ -37,6 +37,8 @@
         	$('#datetimepickerdeces').datepicker({
                 startView: 2
             });
+        	convertDateInput("#datetimepickernaissance");
+        	convertDateInput("#datetimepickerdeces");
         });
         
         function valider() {
