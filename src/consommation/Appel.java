@@ -42,6 +42,7 @@ public class Appel {
 		target = target.path(action);
 		System.out.println(" uri :"  + target.getUri());
 		uneChaine= target.request().accept(MediaType.APPLICATION_JSON).get(String.class);
+		System.out.println(uneChaine);
 		return uneChaine;
 	}
 	

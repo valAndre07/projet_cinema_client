@@ -20,7 +20,7 @@
 	    <div class="span6">
 	    	<h2 style="text-align:center;">Informations générales</h2><br>
 	    	<p style="text-align:center;">Durée : ${film.duree} minutes</p>
-	    	<p style="text-align:center;">Date de sortie : ${film.dateSortie}</p>
+    		<p style="text-align:center;" id="date_${noFilm}">${film.dateSortie}</p>
 	    	<p style="text-align:center;">Budget : ${film.budget}</p>
 	    	<p style="text-align:center;">Recette : ${film.montantRecette} €</p>
 	    	<p style="text-align:center;">Réalisateur : ${film.realisateur.nomRealisateur} ${film.realisateur.prenomRealisateur}</p>
@@ -30,7 +30,7 @@
 			<h2 style="text-align:center;">Acteurs - Personnages</h2><br>
 			<c:forEach var="personnage" items="${mesPersonnages}"  >
 			    <p style="text-align:center;">${personnage.acteur.nomActeur} - ${personnage.nomPersonnage}&nbsp;&nbsp;&nbsp;&nbsp;
-			    <a href="ControleurPersonnage?action=editPersonnageForm?idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-pencil" style="color:white;"></span></a>&nbsp;&nbsp;
+			    <a href="ControleurPersonnage?action=editPersonnageForm&idActeur=${personnage.acteur.noActeur}&idFilm=${personnage.film.noFilm}"><span class="glyphicon glyphicon-pencil" style="color:white;"></span></a>&nbsp;&nbsp;
                 <a onclick="Supprimer('${personnage.acteur.noActeur}','${personnage.film.noFilm}');"><span class="glyphicon glyphicon-trash" style="color:white;"></span></a></p>
 			    
            	</c:forEach>
@@ -38,12 +38,15 @@
 	</div>
 
 <script>
-function Supprimer(noActeur, noFilm) {
-    var r = confirm("Voulez vous supprimer cet acteur ?");
-    if (r == true) {
-    	location.href = "ControleurPersonnage?action=deletePersonnage&idActeur="+noActeur+"&idFilm="+noFilm;
-    }
-}
+	$(document).ready(function(){
+	    convertDate("date_");
+	});
+	function Supprimer(noActeur, noFilm) {
+	    var r = confirm("Voulez vous supprimer cet acteur ?");
+	    if (r == true) {
+	    	location.href = "ControleurPersonnage?action=deletePersonnage&idActeur="+noActeur+"&idFilm="+noFilm;
+	    }
+	}
 </script>
 
 </body>

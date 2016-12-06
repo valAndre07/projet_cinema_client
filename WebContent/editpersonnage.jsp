@@ -14,36 +14,37 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">Edition du Personnage </h1>
+<h1 style="color:white; text-align:center;">Édition du Personnage </h1>
 <br>
-<form id="formFilm" action="ControleurFilm?action=editFilm" onsubmit="return valider()" method="post" style="text-align:center;">
-    <input type="hidden" class="form-control" name="edit_id" placeholder="id" value="${personnage.film.noFilm}" required="true">
-  
-  	<input type="hidden" class="form-control" name="edit_acteur" placeholder="Nom acteur" value="${personnage.acteur.noActeur}" required="true">
 
-	<input type="search" class="form-control" name="edit_nom" placeholder="Nom du personnage" value="${personnage.nomPers}" required="true">   
+<form id="formPersonnage" action="ControleurPersonnage?action=editPersonnage" onsubmit="return valider()" method="post" style="text-align:center;">
+  <div class="form-group">
+    <input type="hidden" class="form-control" name="edit_id_film" placeholder="id" value="${personnage.film.noFilm}" required="true">
+    <input type="hidden" class="form-control" name="edit_id_acteur" placeholder="id" value="${personnage.acteur.noActeur}" required="true">
+    <input type="search" class="form-control" value="${personnage.film.titre}" name="edit_film" placeholder="Titre du film" required="true" disabled="disabled">
+    <input type="search" class="form-control" value="${personnage.acteur.prenomActeur} ${personnage.acteur.nomActeur}" name="edit_acteur" placeholder="Acteur" required="true" disabled="disabled">
+    <input type="search" class="form-control" value="${personnage.nomPersonnage}" name="edit_nom_personnage" placeholder="Nom du personnage" required="true">
+    
+  </div>
   <br>
   <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
-
-
-<script type="text/javascript">
+    
+    <script>
+    function valider() {
+    	if ($('#formPersonnage input[name=edit_film]').val() != '' && $('#formPersonnage input[name=edit_acteur]').val() != '' && 
+    		$('#formPersonnage input[name=edit_nom_personnage]').val() != '')
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		alert("Un des champs n'est pas rempli correctement !");
+    		return false;
+    	}
         
-        
-        function valider() {
-        	if ($('#formFilm input[name=edit_film]').val() != '' && $('#formFilm input[name=edit_acteur]').val() != '' && 
-        			$('#formFilm input[name=edit_nom]').val() != '')
-        	{
-        		return true;
-        	}
-        	else
-        	{
-        		alert("Un des champs n'est pas rempli correctement !");
-        		return false;
-        	}
-            
-        }
-</script>
+    }
+    </script>
     
 </body>
 </html>

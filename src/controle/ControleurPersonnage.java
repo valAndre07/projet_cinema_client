@@ -167,7 +167,6 @@ public class ControleurPersonnage extends HttpServlet {
 		if (EDIT_PERSONNAGE_FORM.equals(actionName)) {
 			int idFilm = Integer.parseInt(request.getParameter("idFilm").toString());
 			int idActeur = Integer.parseInt(request.getParameter("idActeur").toString());
-
 			String ressource = "/personnages/personnage/"+idFilm+"-"+idActeur;	
 			try {
 				
@@ -184,6 +183,25 @@ public class ControleurPersonnage extends HttpServlet {
 			}
 		
 			destinationPage = "/editpersonnage.jsp";
+		}
+		if (EDIT_PERSONNAGE.equals(actionName)) {
+			Personnage personnage = new Personnage();
+			personnage.setNomPersonnage(request.getParameter("edit_nom_personnage").toString());
+			int idActeur = Integer.parseInt(request.getParameter("edit_id_acteur").toString());
+			int idFilm = Integer.parseInt(request.getParameter("edit_id_film").toString());
+			
+			PersonnagePK pk = new PersonnagePK();
+			pk.setNoAct(idActeur);
+			pk.setNoFilm(idFilm);
+			personnage.setId(pk);
+					
+			String ressource = "/personnages/EditPersonnage/";
+			Gson gson = new Gson();
+			Appel unAppel = new Appel();
+			unAppel = new Appel();
+			reponse = unAppel.putJson(ressource, personnage);
+			
+			destinationPage = "/ControleurFilm?action=infosFilm&idFilm="+idFilm;
 		}
 		if (DELETE_PERSONNAGE.equals(actionName)) {
 			int idFilm = Integer.parseInt(request.getParameter("idFilm").toString());
