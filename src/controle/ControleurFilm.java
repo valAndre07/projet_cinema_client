@@ -220,7 +220,7 @@ public class ControleurFilm extends HttpServlet {
 				Appel unAppel = new Appel();
 				reponse = unAppel.appelJson(ressource0);
 				Film film = gson.fromJson(reponse, Film.class);
-				
+
 				reponse = unAppel.appelJson(ressource1);
 				String recup = reponse.substring(15, reponse.length()-1);
 				

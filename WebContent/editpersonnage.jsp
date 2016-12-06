@@ -14,34 +14,14 @@
         
 <br><br><br><br>
 
-<h1 style="color:white; text-align:center;">Edition du film</h1>
+<h1 style="color:white; text-align:center;">Edition du Personnage </h1>
 <br>
 <form id="formFilm" action="ControleurFilm?action=editFilm" onsubmit="return valider()" method="post" style="text-align:center;">
-  <div class="form-group">
-    <input type="hidden" class="form-control" name="edit_id" placeholder="id" value="${film.noFilm}" required="true">
-    <div class="form-group">
-    <label for="exampleSelect1">Film</label>
-    <select class="form-control" name="edit_film">
-        <option value="${pesonnage.film.noFilm}">${pesonnage.film.titre}</option>
-	    <c:forEach items="${mesFilms}" var="film" >
-	    	<option value="${film.noFilm}">${film.titre}</option>
-	    </c:forEach>
-    </select>
-  <br><br>
-  </div>
-  <div class="form-group">
-    <label for="exampleSelect1">Acteur</label>
-    <select class="form-control" name="edit_acteur">
-        <option value="${personnage.acteur.noActeur}">${personnage.acteur.nomActeur}</option>
-      <c:forEach items="${mesActeurs}" var="acteur" >
-	    	<option value="${acteur.noActeur}">${acteur.nomActeur}</option>
-	    </c:forEach>
-    </select>
-  </div>
+    <input type="hidden" class="form-control" name="edit_id" placeholder="id" value="${personnage.film.noFilm}" required="true">
+  
+  	<input type="hidden" class="form-control" name="edit_acteur" placeholder="Nom acteur" value="${personnage.acteur.noActeur}" required="true">
 
-	<input type="search" class="form-control" name="edit_nom" placeholder="Nom du personnage" value="${personnage.nomPers}" required="true">
-	   
-  </div>
+	<input type="search" class="form-control" name="edit_nom" placeholder="Nom du personnage" value="${personnage.nomPers}" required="true">   
   <br>
   <button type="submit" class="btn btn-primary">Modifier</button>
 </form>

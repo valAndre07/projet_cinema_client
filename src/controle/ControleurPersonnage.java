@@ -167,9 +167,22 @@ public class ControleurPersonnage extends HttpServlet {
 		if (EDIT_PERSONNAGE_FORM.equals(actionName)) {
 			int idFilm = Integer.parseInt(request.getParameter("idFilm").toString());
 			int idActeur = Integer.parseInt(request.getParameter("idActeur").toString());
-			
-			System.out.println(idFilm);
-			System.out.println(idActeur);
+
+			String ressource = "/personnages/personnage/"+idFilm+"-"+idActeur;	
+			try {
+				
+				Gson gson = new Gson();
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Personnage personnage = gson.fromJson(reponse, Personnage.class);
+				
+				request.setAttribute("personnage", personnage);
+
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+		
 			destinationPage = "/editpersonnage.jsp";
 		}
 		if (DELETE_PERSONNAGE.equals(actionName)) {
