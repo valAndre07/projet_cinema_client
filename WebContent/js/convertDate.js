@@ -46,8 +46,14 @@ function convertDate(id) {
 					break;
 			}
 	    	var newDate = day+"/"+month+"/"+year;
-	    	$(this).text(newDate);
-	
+	    	if (newDate=="undefined//undefined")
+	    	{
+	    		$(this).text("");
+	    	}
+	    	else
+	    	{
+	    		$(this).text(newDate);
+	    	}	
 		});
     	
     }
@@ -100,6 +106,13 @@ function convertDateInput(id) {
 				break;
 		}
     	var newDate = month+"/"+day+"/"+year;
-    	$(id).val(newDate);
-
+    	
+    	if (newDate=="/undefined/undefined")
+    	{
+    		$(id).val("");
+    	}
+    	else
+    	{
+    		$(id).val(newDate);
+    	}
 	}

@@ -98,11 +98,9 @@ public class ControleurActeur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		String reponse;
-		// execute l'action
-				if (INDEX.equals(actionName)) {
-					destinationPage = "/index.jsp";
-				}
-		// execute l'action
+		if (INDEX.equals(actionName)) {
+			destinationPage = "/index.jsp";
+		}
 		
 		if (LISTER_ACTEURS.equals(actionName)) {
 			String ressource = "acteurs/listeActeurs";

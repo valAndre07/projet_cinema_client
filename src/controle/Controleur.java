@@ -91,11 +91,9 @@ public class Controleur extends HttpServlet {
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		String reponse;
-		// execute l'action
-				if (INDEX.equals(actionName)) {
-					destinationPage = "/index.jsp";
-				}
-		// execute l'action
+		if (INDEX.equals(actionName)) {
+			destinationPage = "/index.jsp";
+		}
 		else {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
 			request.setAttribute(ERROR_KEY, messageErreur);
